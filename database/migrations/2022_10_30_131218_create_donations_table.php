@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('donator_id');
             $table->string('donator_type');
+            $table->string('donator_name');
             $table->string('donation_type');
             $table->float('amount');
             $table->date('date');

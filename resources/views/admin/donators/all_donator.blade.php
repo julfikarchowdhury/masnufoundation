@@ -14,7 +14,7 @@
                         </div>
                     @endif
                 </div>
-                <a style="max-width: 150px; float: right; display: inline-block;" href="
+                <a style="max-width: 150px; float: right;" href="
                 {{ url('/admin/donators/add_donators') }}" class="btn btn-block btn-primary">Add Donator</a>
                 
                 <div class="table-responsive pt-3">
@@ -68,8 +68,9 @@
                             <td style="padding:10px;">
                             {{ $all_donator['email']}}
                             </td>
-                            <td style="padding:10px;">
-                            {{ $all_donator['image']}}
+                            <td style="padding:10px;text-align: center">
+                                <img style="height: 80px; width: 100px;"
+                                src="{{ asset('storage/admin/images/donators/'.$all_donator['image'])}}">
                             </td>
                             <td style="padding:10px;">
                                 @if( $all_donator['status']==1)
@@ -79,7 +80,16 @@
                                 @endif
                             </td>
                             <td>
-                                
+                                <a href="{{ url('admin/donators/'.$all_donator['id']) }}">
+                                    <i style="font-size:35px;"  class="mdi mdi-pencil-box"></i>
+                                </a>
+                                <?php /*<a title="section" class="confirmDelete" 
+                                href="{{ url('admin/delete-section/'.$all_donator['id']) }}">
+                                    <i style="font-size:35px;"  class="mdi mdi-file-excel-box"></i>
+                                </a>*/ ?>
+                                <a href="{{ url('admin/donators/delete-donator/'.$all_donator['id']) }}">
+                                    <i style="font-size:35px;"  class="mdi mdi-file-excel-box"></i>
+                                </a>
                             </td>
                         </tr>
                       @endforeach

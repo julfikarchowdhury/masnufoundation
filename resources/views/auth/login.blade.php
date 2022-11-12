@@ -2,18 +2,18 @@
 @extends('auth.layout')
 
 @section('content')
-  <div class="container-fluid" style="background-color: #66ccff;">
+  <div class="container-fluid">
     <div class="container-fluid page-body-wrapper full-page-wrapper" >
       <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5"  
                            style="background-color: #66ccff;border-radius: 15px;">
-              <div class="brand-logo">
-                <img src="{{ url('admin/images/logo.svg')}}" alt="logo">
+              <div >
+              <h2 style="padding-bottom:30px;color: #4B49AC;text-align:center"><b>Masnu Foundation</b></h2>
               </div>
-              <h4>Hello! let's get started</h4>
-              <h6 class="font-weight-light">Sign in to continue.</h6>
+              
+              <h4 class="font-weight-light">Sign in to continue.</h4>
               
               <form class="pt-3" action="{{ url('admin/login') }}" method="post">@csrf
                 <div class="form-group">

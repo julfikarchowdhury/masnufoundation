@@ -34,6 +34,11 @@
                                 name="name" value="" >
                             </div>
                             <div class="form-group">
+                                <label for="address" > Address</label>
+                                <input type="text" class="form-control" id="address" placeholder="Enter address"
+                                name="address" value="" >
+                            </div>
+                            <div class="form-group">
                                 <label for="email" >Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter email"
                                 name="email" value="" >
@@ -53,7 +58,7 @@
                                 <select  class="form-control text-dark" id="type" name="type" selected="">
                                     <option value="monthly_donator">Monthly</option>                                    
                                     <option value="yearly_donator">Yearly</option>
-                                    <option  value="irregular_donator">Irregular</option>
+                                    
                                       
                                 </select>
                             </div>

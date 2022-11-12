@@ -45,11 +45,20 @@
 						<input type="search" class="form-control" id="user_phone" placeholder="Donator phone/Email" 
 						name="donator_phone" @if(!empty($donations['donator_id'])) value="{{ $donations['donator_id'] }}"readonly @else 
 						value="" @endif >
-						<div id="appendCatagoriesLevel">
+						<div id="donator-phone-suggestion">
 						</div>
 					</div>
-
-					
+					<div class="form-group">
+						<label for="donator_type">Donator Type</label>
+						<input type="text" class="form-control" id="donator_type" placeholder="Donator Type"
+						 name="donator_type" readonly>
+					</div>
+					<div class="form-group">
+						<label for="donator_name">Donator Name</label>
+						<input type="text" class="form-control" id="donator_name" placeholder="Donator Name"
+						 name="donator_name" readonly>
+					</div>
+					<input name="donator_id" id="donator-id" type="hidden">
 					<div class="form-group">
 						<label for="date">Donation Date</label>
 						<input type="date" class="form-control" id="date" name="date" @if(!empty($donations['date'])) 

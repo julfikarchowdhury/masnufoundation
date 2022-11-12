@@ -51,17 +51,17 @@
         <div class="col-md-6 mb-4 stretch-card transparent">
             <div class="card card-tale">
             <div class="card-body">
-                <p class="mb-4">Donators</p>
+                <h3>Donators</h3><hr>
                 <p class="fs-30 mb-2">{{$donators->count()}}</p>
                 
-                <p>{{$m_donators}} monthly | {{$y_donators}} yearly | {{$irr_donators}} irregular</p>
+                <p>{{$m_donators}} monthly | {{$y_donators}} yearly </p>
             </div>
             </div>
         </div>
         <div class="col-md-6 mb-4 stretch-card transparent">
             <div class="card card-dark-blue">
             <div class="card-body">
-                <p class="mb-4">Total Collection</p>
+                <h3 class="fs-40">Collections</h3><hr>
                 <p class="fs-30 mb-2">61344</p>
                 <p>22.00% (30 days)</p>
             </div>
@@ -72,7 +72,7 @@
         <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
             <div class="card card-light-blue">
             <div class="card-body">
-                <p class="mb-4">Expenses</p>
+                <h3>Expenses</h3><hr>
                 <p class="fs-30 mb-2">{{$expenses->sum('amount')}} TK</p>
                 <!-- <p>2.00% (30 days)</p> -->
             </div>

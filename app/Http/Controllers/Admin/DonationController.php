@@ -17,16 +17,16 @@ class DonationController extends Controller
         return view('admin.donations.donations', compact('donations','donators'));
     }
     public function add_edit_donations(Request $request, $id = null)
-     {//   $donator=Donator::query()->get()->toArray();
-         $donator=Donator::where('phone',$request['donator_phone'])->get('type')->toArray();
-         $donatorId=Donator::where('phone',$request['donator_phone'])->get('id')->toArray();
-        if (count($donatorId)>0){
-            $donatorid=$donatorId[0]['id'];
-            $donatortype=$donator[0]['type'];
-        }else{
-            $donatorid=$request['donator_phone'];
-            $donatortype='Irregular Donator';
-        }
+     {
+        //  $donator=Donator::where('phone',$request['donator_phone'])->get('type')->toArray();
+        //  $donatorId=Donator::where('phone',$request['donator_phone'])->get('id')->toArray();
+        // if (count($donatorId)>0){
+        //     $donatorid=$donatorId[0]['id'];
+        //     $donatortype=$donator[0]['type'];
+        // }else{
+        //     $donatorid=$request['donator_phone'];
+        //     $donatortype='Irregular Donator';
+        // }
         if ($id == "") {
             $title = "Add Donation";
             $donations = new Donation;
@@ -42,8 +42,9 @@ class DonationController extends Controller
             $donations->amount = $data['amount'];
             $donations->date = $data['date'];
             $donations->donation_type = $data['donation_type'];
-            $donations->donator_id = $donatorid;
-            $donations->donator_type = $donatortype;
+            $donations->donator_id = $data['donator_id'];
+            $donations->donator_name = $data['donator_name'];
+            $donations->donator_type = $data['donator_type'];
             //dd( $donations );
 
             $donations->save();
@@ -63,6 +64,22 @@ class DonationController extends Controller
                 'data' => $getCatagories
             ]);
         }
+    }
+    public function donatorType(Request $request)
+    {
+        if ($request->ajax()) {
+            $getType = Donator::where('phone', 'LIKE', $request->contact)
+                ->get();
+            return response()->json([
+                'success' => true, 
+                'data' => $getType
+            ]);
+        }
+    }
+    public function ShowDonationDetails($id){
+        $donationDetails = Donation::find($id);
+        
+        return view('admin.donations.view_donation',compact('donationDetails'));
     }
     
 }

@@ -62,21 +62,13 @@
                                 {{ $donation['amount']}}
                             </td>
                             @if(($donation['donator_type'] == "Irregular Donator") )
-                            <td style="padding:15px 10px;text-align:center;">
-                                        Irregular Donator
-                                        
-                                    </td>
-                                    @else
-                            @foreach($donators as $donator)
-                                @if($donation['donator_id']==$donator['id'])
-                                    <td style="padding:15px 10px;text-align:center;">
-                                    <a href="{{ url('admin/donators/'.$donator['id']) }}">{{ $donator['name']}}</a>
-                                    @break;
-                                    </td>
-                                
-                                
-                                @endif
-                            @endforeach
+                                <td style="padding:15px 10px;text-align:center;">
+                                {{ $donation['donator_name']}}                                        
+                                </td>
+                            @else
+                                <td style="padding:15px 10px;text-align:center;">
+                                    <a href="{{ url('admin/donators/'.$donation['donator_id']) }}">{{ $donation['donator_name']}}</a>                           
+                                </td>
                             @endif
                             <td style="padding:15px 10px;text-align:center;">
                                 {{ $donation['donator_type']}}    
@@ -88,7 +80,7 @@
                                 {{ $donation['donation_type']}}
                             </td>
                             <td>
-                                <a href="{{ url('admin/expenses/show-donation-details/'.$donation['id']) }}">
+                                <a href="{{ url('admin/show-donation-details/'.$donation['id']) }}">
                                     <i style="font-size:35px;text-align: center"  class="mdi mdi-eye" title="show detals"></i>
                                 </a> 
                             </td>

@@ -148,7 +148,7 @@ class AdminController extends Controller
             
             $data = $request->all();
 
-            $slider->about = $data['about'];
+            $slider->about = $data['description'];
             $slider->tags = $data['tags'];
             //$admin->image = $data['image'];
             if ($request->hasFile('image')){

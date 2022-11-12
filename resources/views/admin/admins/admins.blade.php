@@ -14,7 +14,7 @@
                         </div>
                     @endif
                 </div>
-                <a style="max-width: 150px; float: right; display: inline-block;" href="
+                <a style="max-width: 150px; float: right;" href="
                 {{ url('/admin/admins/add-edit-admin/') }}" class="btn btn-block btn-primary">Add Admins</a>
                 
                 <div class="table-responsive pt-3">

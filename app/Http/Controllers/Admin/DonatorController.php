@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Donator;
 use Session;
 use Auth;
+use Hash;
 class DonatorController extends Controller
 {
     public function monthly_donator(){
@@ -42,11 +43,18 @@ class DonatorController extends Controller
             $data = $request->all();
 
             $donator->name = $data['name'];
+            $donator->address = $data['address'];
             $donator->email = $data['email'];
-            $donator->password = \Hash::make($data['password']);
+            $donator->password = Hash::make($data['password']);
             $donator->type = $data['type'];
             $donator->phone = $data['phone'];
-            //$admin->image = $data['image'];
+            if ($request->hasFile('image')){
+                $image = $request->image;
+                $name = $image->getClientOriginalName();
+                $image->storeAs('public/admin/images/donators',$name);
+                // $banner = new BannerImage;
+                $donator->image = $name;
+            }
             $donator->status = $data['status'];
             $donator->save();
 
@@ -54,8 +62,14 @@ class DonatorController extends Controller
         }return view('admin.donators.add_donators');
     }
     public function viewDonatorDetails($id){
-        $donator = Donator::query()->where('id',$id)->get();
+        $donator = Donator::find($id);
         
         return view('admin.donators.view_donator',compact('donator'));
+    }
+    public function deleteDonator($id){
+        Donator::where('id',$id)->delete();
+        $message = "Donator has been deleted successfully!";
+        return redirect()->back()->with('success_message',$message);
+
     }
 }
