@@ -6,7 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
             <div class="card-body">
-                <h4 class="card-title">My Expenses</h4>
+            <u><h2  style="text-align: center; padding:10px;">My Expenses</h2></u>
                 <div>
                     @if (session('success_message'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -14,7 +14,7 @@
                         </div>
                     @endif
                 </div>
-                <a style="max-width: 150px; float: right; display: inline-block;" href="
+                <a style="max-width: 150px; float: right; " href="
                 {{ url('/admin/expenses/add-expenses') }}" class="btn btn-block btn-primary">Add Expenses</a>
                 
                 <div class="table-responsive pt-3">

@@ -70,7 +70,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('donators/{id}','DonatorController@viewDonatorDetails');
         Route::get('donators/delete-donator/{id}','DonatorController@deleteDonator');
 
-        //donations
+        //donationsfilter-by-month
         Route::get('donations/donations','DonationController@donations');
         Route::match(['get','post'],'donations/add-edit-donations','DonationController@add_edit_donations');
         
@@ -78,7 +78,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
             ->name('admin.donations.append.donation');
         Route::post('donations/donator-type', [DonationController::class, 'donatorType'])
             ->name('admin.donations.donator.type');
-        Route::get('show-donation-details/{id}',[DonationController::class, 'ShowDonationDetails']);
+        Route::get('show-donation-details/{id}',[DonationController::class, 'ShowDonationDetails'])
+            ->name('show-donation-details.{id}');
+        Route::post('/donations/filter-by-month',[DonationController::class, 'donations']);
             
         //expenses
         Route::get('expenses/all-expenses','ExpensesController@all_expenses');

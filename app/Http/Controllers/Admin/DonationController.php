@@ -10,23 +10,55 @@ use App\Models\Donator;
 
 class DonationController extends Controller
 {
-    public function donations()
-    {
-        $donations = Donation::query()->get();	
+    public function donations(Request $request)
+    {   if ($request->ajax()) {
+        
+        $donations = Donation::whereMonth('date', ($request->month))
+            ->get();
         $donators = Donator::query()->get();
-        return view('admin.donations.donations', compact('donations','donators'));
+        //return view('admin.donations.donations', compact('donations','donators'));
+        $content='';
+            $content ='<div>';
+				 foreach ($donations as $donator) {
+					
+					$content .= '<tr>
+                                    <td style="padding:15px 10px;text-align:center;">' 
+                                    .$donator->id.
+                                    '</td>
+                                    <td style="padding:15px 10px;text-align:center;">' 
+                                    .$donator->amount.
+                                    '</td>
+                                    <td style="padding:15px 10px;text-align:center;">' 
+                                    .$donator->donator_name.
+                                    '</td>
+                                    
+                                    <td style="padding:15px 10px;text-align:center;">' 
+                                    .$donator->donator_type.
+                                    '</td>
+                                    <td style="padding:15px 10px;text-align:center;">' 
+                                    .date('d-m-Y', strtotime($donator->date)).
+                                    '</td>
+                                    <td style="padding:15px 10px;text-align:center;">' 
+                                    .$donator->donation_type.
+                                    '</td>
+                                    <td>
+                                        <li class="donationDetails" value="'.$donator['id'].'">
+                                            <i style="font-size:35px;text-align: center"  class="mdi mdi-eye" title="show detals"></i>
+                                        </li> 
+                                    </td>
+                                </tr>';
+				}
+				$content .= '</div>';
+        return $content;
+        
+    }else{
+            $donations = Donation::query()->get();	    
+            $donators = Donator::query()->get();
+            return view('admin.donations.donations', compact('donations','donators'));
+        }
     }
     public function add_edit_donations(Request $request, $id = null)
      {
-        //  $donator=Donator::where('phone',$request['donator_phone'])->get('type')->toArray();
-        //  $donatorId=Donator::where('phone',$request['donator_phone'])->get('id')->toArray();
-        // if (count($donatorId)>0){
-        //     $donatorid=$donatorId[0]['id'];
-        //     $donatortype=$donator[0]['type'];
-        // }else{
-        //     $donatorid=$request['donator_phone'];
-        //     $donatortype='Irregular Donator';
-        // }
         if ($id == "") {
             $title = "Add Donation";
             $donations = new Donation;

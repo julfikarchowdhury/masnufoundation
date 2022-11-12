@@ -5,7 +5,7 @@ $(document).ready(function () {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		}
 	});
-
+	//work to put the contact clicked by user from automatic contact suggestion
 	$(document).on('click', ".donator-contact-suggest", function() {
 		let contact = $(this).html();
 		$("#user_phone").val(contact)
@@ -25,7 +25,28 @@ $(document).ready(function () {
 		})
 		
 	});
+	//filter by month in donation blade
+	$("#x").on("click", function (){
+		var month = $(this).val();
+		$.ajax({
+			url: 'filter-by-month',
+			type: "post",
+			data:{'month':month},
+			success:function (response){
+				$('#filtered-table').html(response);
+				}
+				
+			});
+	});
+	$(document).on('click', ".donationDetails", function() {
+		var dDetail = $(this).val();
+alert(dDetail)
+		window.location.href = "show-donation-details/";
+	});
 	
+
+
+	//live search on add donation page for automatic contact suggestion
 	$("#user_phone").on("keyup", function () {
 		let target = $('#donator-phone-suggestion');
 		target.empty();
@@ -73,4 +94,38 @@ $(document).ready(function () {
 			console.log(error)
 		}
 	});
+	//filter by month on donation blade page
+	
 });
+// content +='<tr>';
+// 				 for (let donator of response.donations) {
+					
+// 					content += '<td style="padding:15px 10px;text-align:center;">' +
+// 								donator.id
+//                             '</td>' +
+//                             '<td style="padding:15px 10px;text-align:center;">' +
+//                                 donator.amount
+//                             '</td>' +
+//                                 '<td style="padding:15px 10px;text-align:center;">' +
+//                                 donator.donator_name                                       
+//                                 '</td>' +
+//                                 '<td style="padding:15px 10px;text-align:center;">' +
+//                                     '<a href="{{ url("admin/donators/".'+donator.id+') }}">'+donator.donator_name+'</a> ' +                          
+//                                 '</td>' +
+//                             '<td style="padding:15px 10px;text-align:center;">' +
+// 							donator.donator_type   
+//                             '</td>' +
+//                             '<td style="padding:15px 10px;text-align:center;">' +
+// 							donator.date
+//                             '</td>' +
+//                             '<td style="padding:15px 10px;text-align:center;">' +
+// 							donator.donation_type
+//                             '</td>' +
+//                             '<td>' +
+//                                 '<a href="{{ url("admin/show-donation-details/".'+donator.id+') }}">' +
+//                                     '<i style="font-size:35px;text-align: center"  class="mdi mdi-eye" title="show detals"></i>' +
+//                                 '</a> ' +
+//                             '</td>' ;
+// 				}
+// 				content += '</tr>';
+

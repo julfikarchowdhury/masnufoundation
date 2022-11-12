@@ -6,7 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
             <div class="card-body">
-                <h4 class="card-title">All Expenses</h4>
+            <u><h2  style="text-align: center; padding:10px;">All Expenses</h2></u>
                 <div>
                     @if (session('success_message'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -78,7 +78,7 @@
                                     {{ $expense['expenses_reason']}}</textarea>
                                 </td>
                                 <td style="padding:10px;">
-                                    {{ $expense['date']}}
+                                    {{date('d-m-Y', strtotime($expense->date))}}
                                 </td>
                                 <td style="padding:10px;">
                                     {{ $expense['created_at']->format('h:m')}}<br><br>

@@ -8,8 +8,8 @@
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5" style="border-radius: 15px;background-color: #66ccff">
-              <div class="brand-logo">
-                <img src="{{ url('admin/images/logo.svg')}}" alt="logo">
+              <div >
+                <h2 style="padding-bottom:30px;color: #4B49AC;text-align:center"><b>Masnu Foundation</b></h2>
               </div>
               <h4>New here?</h4>
               <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
