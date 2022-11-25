@@ -1,9 +1,11 @@
 
 
 
-<div class=" p-5 text-center nav-bg-color" >
-            <p>Copyright © 2022 As-Sunnah Foundation - all rights reserved. Technical support by Quantic Dynamics.</p>
+<div class=" p-3 text-center " style="background-color:#ffffff" >
+    <p >Copyright © 2022 <a style="color:#008e48;text-decoration: none" href="{{url('/')}}">
+        As-Sunnah Foundation</a> - all rights reserved. Technical support by 
+        <a style="color:#008e48;text-decoration: none" href="https://t.me/julfikarChowdhury">Julfikar Chowdhury.</a>
+    </p>
+</div>
 
-            <span> Terms and conditions | Privacy Policy</span>
-        </div>
-    
+

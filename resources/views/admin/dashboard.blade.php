@@ -81,8 +81,8 @@
         <div class="col-md-6 stretch-card transparent">
             <div class="card card-light-danger">
             <div class="card-body">
-                <p class="mb-4"></p>
-                <p class="fs-30 mb-2"></p>
+                <h3>Donations</h3><hr>
+                <p class="fs-30 mb-2">{{$donations->sum('amount')}} TK</p>
                 <p></p>
             </div>
             </div>

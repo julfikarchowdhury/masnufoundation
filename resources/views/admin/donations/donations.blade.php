@@ -29,18 +29,18 @@
                             Month
                         </button>
                         <div class="dropdown-menu" aria-labelledby="filterByMonth">
-                            <li class="dropdown-item" id="x"  value="10">January</li>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/2') }}">February</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/3') }}">March</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/4') }}">April</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/5') }}">May</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/6') }}">June</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/7') }}">July</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/8') }}">August</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/9') }}">September</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/10') }}">October</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/11') }}">November</a>
-                            <a class="dropdown-item" href="{{ url('/admin/donations/donations/12') }}">December</a>
+                            <li class="dropdown-item x"  value="1">January</li>
+                            <li class="dropdown-item x"  value="2">February</li>
+                            <li class="dropdown-item x"  value="3">March</li>
+                            <li class="dropdown-item x"  value="4">April</li>
+                            <li class="dropdown-item x"  value="5">May</li>
+                            <li class="dropdown-item x"  value="6">June</li>
+                            <li class="dropdown-item x"  value="7">July</li>
+                            <li class="dropdown-item x"  value="8">August</li>
+                            <li class="dropdown-item x"  value="9">September</li>
+                            <li class="dropdown-item x"  value="10">October</li>
+                            <li class="dropdown-item x"  value="11">November</li>
+                            <li class="dropdown-item x"  value="12">December</li>
 
                         </div>
                     </div>      
@@ -67,7 +67,7 @@
                             Donation<br> Date
                         </th>
                         <th style="padding:10px;text-align:center;">
-                            Donation<br>Type
+                            Donation<br>Fund
                         </th>
                         <th style="padding:15px 10px;text-align:center;">
                             Actions

@@ -23,7 +23,7 @@
   <link rel="stylesheet" type="text/css" href="{{ url('admin/js/select.dataTables.min.css')}}">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="{{ url('admin/css/vertical-layout-light/style.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url('admin/css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ url('admin/images/favicon.png')}}" />
 

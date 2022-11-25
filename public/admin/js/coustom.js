@@ -26,8 +26,9 @@ $(document).ready(function () {
 		
 	});
 	//filter by month in donation blade
-	$("#x").on("click", function (){
+	$(".x").on("click", function (){
 		var month = $(this).val();
+		//alert(month)
 		$.ajax({
 			url: 'filter-by-month',
 			type: "post",
@@ -38,11 +39,8 @@ $(document).ready(function () {
 				
 			});
 	});
-	$(document).on('click', ".donationDetails", function() {
-		var dDetail = $(this).val();
-alert(dDetail)
-		window.location.href = "show-donation-details/";
-	});
+	
+	
 	
 
 
@@ -82,7 +80,7 @@ alert(dDetail)
 						// toastr.warning('No data found !', 'Oops !');
 						//console.log(search);
 						$("#donator-id").val(search)
-						$("#donator_type").val("Irregular Donator")
+						$("#donator_type").val("0")//0 indicate irregular Donator
 						$("#donator_name").prop("readonly",false);
 					}
 				},

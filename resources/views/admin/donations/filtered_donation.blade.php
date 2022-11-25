@@ -10,7 +10,7 @@
                             <td style="padding:15px 10px;text-align:center;">
                                 {{ $donation['amount']}}
                             </td>
-                            @if(($donation['donator_type'] == "Irregular Donator") )
+                            @if(($donation['donator_type'] == "0") )
                                 <td style="padding:15px 10px;text-align:center;">
                                 {{ $donation['donator_name']}}                                        
                                 </td>
@@ -20,16 +20,32 @@
                                 </td>
                             @endif
                             <td style="padding:15px 10px;text-align:center;">
-                                {{ $donation['donator_type']}}    
+                                @if( $donation['donator_type'] == "0")
+                                Irregular Donator
+                                @elseif($donation['donator_type'] == "1")
+                                Yearly Donator
+                                @else
+                                Monthly Donator
+                                @endif    
                             </td>
                             <td style="padding:15px 10px;text-align:center;">
-                                {{date('d-m-Y', strtotime($donation->date))}}
+                                {{date('d-m-Y', strtotime($donation['date']))}}
                             </td>
                             <td style="padding:15px 10px;text-align:center;">
-                                {{ $donation['donation_type']}}
+                                @if( $donation['donation_type'] == "1")
+                                    Jakat
+                                @elseif($donation['donation_type'] == "2")
+                                    Lillah Boarding
+                                @elseif($donation['donation_type'] == "3")
+                                    General
+                                @elseif($donation['donation_type'] == "4")
+                                    Orpan
+                                @elseif($donation['donation_type'] == "5")
+                                    Sadaqah Jariyah
+                                @endif 
                             </td>
                             <td>
-                                <a href="{{ url('admin/show-donation-details/'.$donation['id']) }}">
+                                <a href="{{ url('admin/donations/'.$donation['id']) }}">
                                     <i style="font-size:35px;text-align: center"  class="mdi mdi-eye" title="show detals"></i>
                                 </a> 
                             </td>

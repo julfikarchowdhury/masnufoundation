@@ -72,10 +72,12 @@
                                     {{ $expense['date']}}
                                 </td>
                                 <td style="padding:10px;">
-                                    {{ $expense['created_at']}}
+                                    {{ $expense['created_at']->format('h:m')}}<br><br>
+                                    {{ $expense['created_at']->format('d/m/y')}}
                                 </td>
                                 <td style="padding:10px;">
-                                    {{ $expense['updated_at']}}
+                                    {{ $expense['updated_at']->format('h:m')}}<br><br>
+                                    {{ $expense['updated_at']->format('d/m/y')}}
                                 </td>
                                 <td>
                                     <a href="{{ url('admin/expenses/add-expenses/'.$expense['id']) }}">

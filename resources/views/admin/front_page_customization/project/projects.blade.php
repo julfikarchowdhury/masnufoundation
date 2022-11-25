@@ -6,7 +6,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Projects</h4>
+            <u><h2  style="text-align: center; padding:10px;">Projects</h2></u>
                 <div>
                     @if (session('success_message'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">

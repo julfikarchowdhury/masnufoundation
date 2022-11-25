@@ -8,6 +8,8 @@ use App\Models\Admin;
 use App\Models\Slider;
 use App\Models\Donator;
 use App\Models\Expense;
+use App\Models\Donation;
+
 use Auth;
 class AdminController extends Controller
 {
@@ -18,8 +20,9 @@ class AdminController extends Controller
         $irr_donators=Donator::where('type',"irregular_donator")->count();
         // $t_donators = $donators->get()->toArray();
         $expenses = Expense::query()->get();
+        $donations = Donation::query()->get();
 
-        return view('admin.dashboard',compact('donators','y_donators','m_donators','irr_donators','expenses'));
+        return view('admin.dashboard',compact('donators','y_donators','m_donators','irr_donators','expenses','donations'));
     }
 
     //adsmins
@@ -110,12 +113,16 @@ class AdminController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
         
-        if(Auth::guard('admin')->attempt(['type'=>$data['type'],'email'=>$data['email'],'password'=>$data['password'],'status'=>1])){
-            if ($data['type'] == "user"){
-                return ("my account");
-            }else{
-            return redirect('admin/dashboard');}
+            if(Auth::guard('admin')->attempt(['type'=>$data['type'],'email'=>$data['email'],
+                'password'=>$data['password'],'status'=>1])){
+                
+                    return redirect('admin/dashboard');
             }
+            elseif(Auth::guard('admin')->attempt(['type'=>$data['type'],'phone'=>$data['email'],
+                'password'=>$data['password'],'status'=>1])){
+                        return ("my account");
+                    
+        }
         
         }
         return view('auth.login');

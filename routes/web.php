@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\Front\ProjectController;
+use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Admin\DonationController;
 
 /*
@@ -16,46 +16,21 @@ use App\Http\Controllers\Admin\DonationController;
 |
 */
 
+
+
 // Route::get('/', function () {
-//     return view('front.dashboard');
+//     return view('welcome');
 // });
-
-//Route::get('/auth/login', function () {
- //   return view('auth.login');
-//});
-
-//Route::get('contact', [DonationController::class, 'search_number']);
-
-Route::get('/admin/register', function () {
-    return view('auth.register');
-});
-
-Route::get('admin/about', function () {
-    return view('front.about');
-});
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function () {
      Route::match(['get','post'],'login','AdminController@login');
      Route::group(['middleware'=>['admin']],function(){
          Route::get('dashboard','AdminController@dashboard');
-     
-    //     // Route::get('update-password','AdminController@updatePassword');
-    //     // Route::post('update-admin-password','AdminController@updateAdminPassword');
-    //     Route::match(['get','post'],'update-admin-password','AdminController@updateAdminPassword');
-    //     Route::match(['get','post'],'update-admin-details','AdminController@updateAdminDetails');
-    //     Route::match(['get','post'],'update-vendor-details/{slug}','AdminController@updateVendorDetails');
-    //     Route::get('admins/{title?}','AdminController@admin');
-    //     Route::get('view-vendor-details/{id}','AdminController@viewVendorDetails');
 
         Route::get('logout','AdminController@logout');
 
-        //dashboard
-        //Route::get('dashboard','AdminController@dashboard');
-
+        
         //admins
         Route::get('admins/admins','AdminController@admins');
-        //Route::get('admins/add_admins','AdminController@view_admins');
-        //Route::post('add_admins','AdminController@add_admins');
-
         Route::match(['get','post'],'admins/add-edit-admin/{id?}', 'AdminController@add_edit_admin');
         Route::get('admins/delete-admin/{id}','AdminController@deleteAdmin');
 
@@ -78,8 +53,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
             ->name('admin.donations.append.donation');
         Route::post('donations/donator-type', [DonationController::class, 'donatorType'])
             ->name('admin.donations.donator.type');
-        Route::get('show-donation-details/{id}',[DonationController::class, 'ShowDonationDetails'])
-            ->name('show-donation-details.{id}');
+        Route::get('donations/{id}',[DonationController::class, 'ShowDonationDetails']);
         Route::post('/donations/filter-by-month',[DonationController::class, 'donations']);
             
         //expenses
@@ -112,5 +86,22 @@ Route::get('about', [HomeController::class, 'about']);
 Route::get('projects', [HomeController::class, 'projects']);
 Route::get('gallery', [HomeController::class, 'gallery']);
 Route::get('contact', [HomeController::class, 'contact']);
-//Route::get('/', [HomeController::class, 'dashboard']);
+Route::post('donate', [HomeController::class, 'donate']);
 
+//Route::match(['get','post'],'user/login',[UserController::class,'Login']);
+Route::match(['get','post'],'user/register',[UserController::class,'Register']);
+
+
+Route::prefix('/user')->namespace('App\Http\Controllers\Front')->group(function () {
+    Route::match(['get','post'],'login',[UserController::class,'Login']);
+    Route::group(['middleware'=>['user']],function(){
+        //Route::get('dashboard','AdminController@dashboard');
+
+
+        Route::get('logout',[UserController::class,'Logout']);
+
+        Route::get('profile', [UserController::class, 'Profile']);
+        Route::get('my-donation', [UserController::class, 'MyDonation']);
+        Route::get('on-going-donations', [UserController::class, 'OnGoingDonations']);
+    });
+});

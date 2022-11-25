@@ -2,18 +2,12 @@
 
 
 @section('content')
+<nav class="navbar " style="background-color: #f2f2f2;padding:15px">
+	<h2 >Donator</h2>				
+</nav>
         <div class="content-wrapper">
-          <div class="row">
-            <div class="col-md-12 grid-margin">
-              <div class="row">
-                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Donator</h3>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-            <div class="col-md-4 grid-margin stretch-card">
+          
+            <div class="col-md-4 grid-margin stretch-card"  style="margin: auto;">
                 <div class="card">
                     <div class="card-body">
                         <h3 style="text-align:center; padding-bottom: 20px; text-decoration: underline;" ><b>Add Donator</b> </h3>
@@ -56,8 +50,8 @@
                             <div class="form-group">
                                 <label for="type" >Select Donator Type</label>
                                 <select  class="form-control text-dark" id="type" name="type" selected="">
-                                    <option value="monthly_donator">Monthly</option>                                    
-                                    <option value="yearly_donator">Yearly</option>
+                                    <option value="2">Monthly</option>                                    
+                                    <option value="1">Yearly</option>
                                     
                                       
                                 </select>

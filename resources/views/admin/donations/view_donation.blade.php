@@ -3,18 +3,11 @@
 
 @section('content')
 
-
+<nav class="navbar " style="background-color: #f2f2f2;padding:15px">
+	<h2 >Donations</h2>				
+</nav>
 <div class="content-wrapper">
-	<div class="row">
-		<div class="col-md-12 grid-margin">
-			<div class="row">
-				<div class="col-12 col-xl-8 mb-4 mb-xl-0">
-					<h3 class="font-weight-bold">donator</h3>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4 grid-margin stretch-card">
+	<div class="col-md-4 grid-margin stretch-card" style="margin: auto;">
 		<div class="card">
 			<div class="card-body">
             <h3 style="text-align:center; padding-bottom: 20px; text-decoration: underline;"><b>Donatoin Details</b> </h3>
@@ -37,12 +30,12 @@
 						<input class="form-control" value="{{$donationDetails['donator_type']}}" readonly>
 					</div>
                     <div class="form-group">
-						<label>Donated at </label>
+						<label>Donated On </label>
 						<input class="form-control" value="{{$donationDetails['date']}}" readonly>
 					</div>
                     <div class="form-group">
 						<label>Recorded at </label>
-						<input class="form-control" value="{{$donationDetails['created_at']}}" readonly>
+						<input class="form-control" value="{{$donationDetails['created_at']->format('h:m')}} on {{ $donationDetails['created_at']->format('d/m/y')}}" readonly>
 					</div>
 
 					

@@ -16,35 +16,35 @@ class DonationController extends Controller
         $donations = Donation::whereMonth('date', ($request->month))
             ->get();
         $donators = Donator::query()->get();
-        //return view('admin.donations.donations', compact('donations','donators'));
         $content='';
             $content ='<div>';
-				 foreach ($donations as $donator) {
+				 foreach ($donations as $donation) {
 					
 					$content .= '<tr>
                                     <td style="padding:15px 10px;text-align:center;">' 
-                                    .$donator->id.
+                                    .$donation->id.
                                     '</td>
                                     <td style="padding:15px 10px;text-align:center;">' 
-                                    .$donator->amount.
+                                    .$donation->amount.
                                     '</td>
                                     <td style="padding:15px 10px;text-align:center;">' 
-                                    .$donator->donator_name.
+                                    .$donation->donator_name.
                                     '</td>
                                     
                                     <td style="padding:15px 10px;text-align:center;">' 
-                                    .$donator->donator_type.
+                                    .$donation->donator_type.
                                     '</td>
                                     <td style="padding:15px 10px;text-align:center;">' 
-                                    .date('d-m-Y', strtotime($donator->date)).
+                                    .date('d-m-Y', strtotime($donation->date)).
                                     '</td>
                                     <td style="padding:15px 10px;text-align:center;">' 
-                                    .$donator->donation_type.
+                                    .$donation->donation_type.
                                     '</td>
                                     <td>
-                                        <li class="donationDetails" value="'.$donator['id'].'">
-                                            <i style="font-size:35px;text-align: center"  class="mdi mdi-eye" title="show detals"></i>
-                                        </li> 
+                                    <a href="'.$donation->id.'">
+                                        <i style="font-size:35px;text-align: center"  class="mdi mdi-eye" 
+                                        title="show detals"></i>
+                                    </a> 
                                     </td>
                                 </tr>';
 				}
@@ -52,10 +52,17 @@ class DonationController extends Controller
         return $content;
         
     }else{
-            $donations = Donation::query()->get();	    
-            $donators = Donator::query()->get();
-            return view('admin.donations.donations', compact('donations','donators'));
-        }
+        // $donations = Donation::leftjoin('donators','donations.donator_id','donators.id')
+        //     ->select('donations.id as donations_id','donations.donator_id','donations.donator_name'
+        //     ,'donations.amount','donations.date','donations.donation_type',
+        //     'donations.donator_type')
+        //     ->get()->toArray();
+         //dd($donations);	    
+
+         $donations = Donation::query()->get();	    
+        // $donators = Donator::query()->get();
+        return view('admin.donations.donations', compact('donations'));
+    }
     }
     public function add_edit_donations(Request $request, $id = null)
      {

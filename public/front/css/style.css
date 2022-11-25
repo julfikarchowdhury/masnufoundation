@@ -1,7 +1,7 @@
 
 .nav-bg-color{
-    background-color: #0a3b1e;
-    color: #fffffd;
+    background-color: #42e442;
+    color: #ffffff;
 }
 .div-gray {
     background-color: #e6e6e6;
@@ -10,3 +10,21 @@
 .div-white {
     background-color: #ffffff;
 }
+.about-sidebar-indicator{
+    border-right: 6px solid #008e48;
+    height: 50px;
+    color:#008e48;
+}
+.navbar-indicator{
+    border-bottom: 3px solid #00cc44;
+    color:#00cc44;
+}
+.about-div-sizing{
+    
+    padding:10px;
+
+}
+.about-heading {
+    font-size: 30px;
+  }
+

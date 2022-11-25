@@ -2,18 +2,11 @@
 
 
 @section('content')
+<nav class="navbar " style="background-color: #f2f2f2;padding:15px">
+	<h2 >Donations</h2>				
+</nav>
 <div class="content-wrapper">
-	<div class="row">
-		<div class="col-md-12 grid-margin">
-			<div class="row">
-				<div class="col-12 col-xl-8 mb-4 mb-xl-0">
-					<h3 class="font-weight-bold">Donations</h3>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4 grid-margin stretch-card">
+	<div class="col-md-4 grid-margin stretch-card" style="margin: auto;">
 		<div class="card">
 			<div class="card-body">
 				<h3 style="text-align:center; padding-bottom: 20px; text-decoration: underline;"><b>{{ $title}}</b> </h3>
@@ -48,11 +41,10 @@
 						<div id="donator-phone-suggestion">
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="donator_type">Donator Type</label>
-						<input type="text" class="form-control" id="donator_type" placeholder="Donator Type"
+					<!-- hidden input box for donator type -->
+						<input type="hidden" type="text" class="form-control" id="donator_type" placeholder="Donator Type"
 						 name="donator_type" readonly>
-					</div>
+					
 					<div class="form-group">
 						<label for="donator_name">Donator Name</label>
 						<input type="text" class="form-control" id="donator_name" placeholder="Donator Name"

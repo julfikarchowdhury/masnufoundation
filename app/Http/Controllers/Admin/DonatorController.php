@@ -12,15 +12,13 @@ class DonatorController extends Controller
 {
     public function monthly_donator(){
         $m_donators=Donator::query();
-        $m_donators =$m_donators->where('type','monthly_donator')->get()->toArray();
+        $m_donators =$m_donators->where('type','2')->get()->toArray();//2 indicate monthly donator
         return view('admin.donators.monthly_donator',compact('m_donators'));
-        //return view('admin.donators.monthly_donator');
     }
     public function yearly_donator(){
         $y_donators=Donator::query();
-        $y_donators =$y_donators->where('type','yearly_donator')->get()->toArray();
+        $y_donators =$y_donators->where('type','1')->get()->toArray();//1 indicate yearly donator
         return view('admin.donators.yearly_donator',compact('y_donators'));
-        //return view('admin.donators.yearly_donator');
     }
     public function all_donator(){
         $all_donators=Donator::query()->get();

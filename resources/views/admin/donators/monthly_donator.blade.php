@@ -21,7 +21,7 @@
                 <table id="sections"  class="table table-bordered table-hover">
                 
                     <thead>
-                    <tr>
+                    <tr style="text-align: center;">
                         <th style="padding:10px;">
                         ID
                         </th>
@@ -75,16 +75,19 @@
                                  <i style="font-size:30px;" class="mdi mdi-bookmark-outline"></i>
                                 @endif
                             </td>
-                            <td>
+                            <td style="font-size:25px;text-align :center">
                                 <a href="{{ url('admin/donators/'.$m_donator['id']) }}">
-                                    <i style="font-size:35px;"  class="mdi mdi-pencil-box"></i>
+                                    <i class="fas fa-edit"></i>
                                 </a>
                                 <?php /*<a title="section" class="confirmDelete" 
                                 href="{{ url('admin/delete-section/'.$m_donator['id']) }}">
                                     <i style="font-size:35px;"  class="mdi mdi-file-excel-box"></i>
                                 </a>*/ ?>
+                                <a href="{{ url('admin/donators/'.$m_donator['id']) }}" title="Show Details">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                </a>
                                 <a href="{{ url('admin/donators/delete-donator/'.$m_donator['id']) }}">
-                                    <i style="font-size:35px;"  class="mdi mdi-file-excel-box"></i>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>

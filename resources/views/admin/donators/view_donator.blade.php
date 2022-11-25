@@ -2,17 +2,12 @@
 
 @section('content')
 
-
+<nav class="navbar " style="background-color: #f2f2f2;padding:15px">
+	<h2>Donator Details</h2>				
+</nav>
 <div class="content-wrapper">
-	<div class="row" >
-		<div class="col-md-12 grid-margin">
-			<div class="row">
-				<div class="col-12 mb-4 mb-xl-0">
-					<h3 class="font-weight-bold"><u>donator</u></h3>
-				</div>
-			</div>
-		</div>
-	</div>
+
+	
 	<div class="col-5 grid-margin stretch-card" style="margin: auto;">
 		<div class="card">
 			<div class="card-body">
@@ -46,7 +41,9 @@
 					</div>
                     <div class="form-group">
 						<label>Status</label>
-						<input class="form-control" value="{{$donator['status']}}" readonly>
+						<input class="form-control" @if($donator['status'])=="1" 
+						style="color:green;border-color:green;font-weight: bold;"  value="Active" @else 
+						style="color:red;border-color:red;font-weight: bold;" value="Not Active" @endif readonly>
 					</div>
 
 					
