@@ -9,20 +9,22 @@ use App\Models\Slider;
 use App\Models\Donator;
 use App\Models\Expense;
 use App\Models\Donation;
+use App\Models\Project;
 
 use Auth;
 class AdminController extends Controller
 {
     public function dashboard(){
         $donators = Donator::query();
-        $y_donators=Donator::where('type',"yearly_donator")->count(); 
-        $m_donators=Donator::where('type',"monthly_donator")->count();
-        $irr_donators=Donator::where('type',"irregular_donator")->count();
-        // $t_donators = $donators->get()->toArray();
+        $y_donators=Donator::where('type',"1")->count(); 
+        $m_donators=Donator::where('type',"2")->count();
+        $irr_donators=Donator::where('type',"0")->count();
         $expenses = Expense::query()->get();
         $donations = Donation::query()->get();
+        $projects = Project::get();
 
-        return view('admin.dashboard',compact('donators','y_donators','m_donators','irr_donators','expenses','donations'));
+        return view('admin.dashboard',compact('donators','y_donators','m_donators','irr_donators',
+        'expenses','donations','projects'));
     }
 
     //adsmins

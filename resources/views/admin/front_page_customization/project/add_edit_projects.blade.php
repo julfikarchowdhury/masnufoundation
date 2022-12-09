@@ -43,12 +43,12 @@
                             <img style="height: 100px; width: 200px;text-align: center;border: 1px solid #000000;" 
                             src="{{ asset('storage/admin/front/images/projects/'.$project['image'])}}"><br><br>@else  @endif
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="amount" >Amount</label>
                                 <input type="text" class="form-control" id="amount" placeholder="Enter amount"
                                 name="amount" @if(!empty($project['amount'])) value="{{ $project['amount'] }}" 
                                 @else value="" @endif >
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="status" >Status</label>
                                 <input type="text" class="form-control" id="status" placeholder="Status"

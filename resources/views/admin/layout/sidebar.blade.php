@@ -64,6 +64,9 @@
                     <li class="nav-item"> 
                         <a class="nav-link" href="/admin/donations/donations">Donations</a>
                     </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="/admin/donations/general-donations">General Donation</a>
+                    </li>
                 </ul>
             </div>
         </li>

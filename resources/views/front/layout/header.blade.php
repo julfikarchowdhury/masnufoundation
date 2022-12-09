@@ -45,6 +45,9 @@
                             <a class="nav-link" href="about">About</a>
                         </li>
                         <li class="nav-item  ms-5">
+                            <a class="nav-link" href="donor-life-time-member">Donor and Life Time Member</a>
+                        </li>
+                        <li class="nav-item  ms-5">
                             <a class="nav-link" href="projects">Projects</a>
                         </li>
                         <li class="nav-item  ms-5">

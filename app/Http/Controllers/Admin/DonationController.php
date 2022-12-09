@@ -9,9 +9,63 @@ use App\Models\Donation;
 use App\Models\Donator;
 
 class DonationController extends Controller
-{
-    public function donations(Request $request)
-    {   if ($request->ajax()) {
+{   
+    public function generalDonation(Request $request){
+        if ($request->ajax()) {
+        
+            $donations = Donation::whereMonth('date', ($request->month))
+                ->get();
+            $donators = Donator::query()->get();
+            $content='';
+                $content ='<div>';
+                    foreach ($donations as $donation) {
+                        
+                        $content .= '<tr>
+                                        <td style="padding:15px 10px;text-align:center;">' 
+                                        .$donation->id.
+                                        '</td>
+                                        <td style="padding:15px 10px;text-align:center;">' 
+                                        .$donation->amount.
+                                        '</td>
+                                        <td style="padding:15px 10px;text-align:center;">' 
+                                        .$donation->donator_name.
+                                        '</td>
+                                        
+                                        <td style="padding:15px 10px;text-align:center;">' 
+                                        .$donation->donator_type.
+                                        '</td>
+                                        <td style="padding:15px 10px;text-align:center;">' 
+                                        .date('d-m-Y', strtotime($donation->date)).
+                                        '</td>
+                                        <td style="padding:15px 10px;text-align:center;">' 
+                                        .$donation->donation_type.
+                                        '</td>
+                                        <td>
+                                        <a href="'.$donation->id.'">
+                                            <i style="font-size:35px;text-align: center"  class="mdi mdi-eye" 
+                                            title="show detals"></i>
+                                        </a> 
+                                        </td>
+                                    </tr>';
+                    }
+                    $content .= '</div>';
+            return $content;
+        
+        }else{
+            // $donations = Donation::leftjoin('donators','donations.donator_id','donators.id')
+            //     ->select('donations.id as donations_id','donations.donator_id','donations.donator_name'
+            //     ,'donations.amount','donations.date','donations.donation_type',
+            //     'donations.donator_type')
+            //     ->get()->toArray();
+            //dd($donations);	    
+
+            $donations = Donation::query()->where('donation_type',3)->whereMonth('date',(now()->month))->get();	    
+            // $donators = Donator::query()->get();
+            return view('admin.donations.general_donations', compact('donations'));
+        }
+    }
+    public function donations(Request $request){
+       if ($request->ajax()) {
         
         $donations = Donation::whereMonth('date', ($request->month))
             ->get();
@@ -51,18 +105,18 @@ class DonationController extends Controller
 				$content .= '</div>';
         return $content;
         
-    }else{
-        // $donations = Donation::leftjoin('donators','donations.donator_id','donators.id')
-        //     ->select('donations.id as donations_id','donations.donator_id','donations.donator_name'
-        //     ,'donations.amount','donations.date','donations.donation_type',
-        //     'donations.donator_type')
-        //     ->get()->toArray();
-         //dd($donations);	    
+        }else{
+            // $donations = Donation::leftjoin('donators','donations.donator_id','donators.id')
+            //     ->select('donations.id as donations_id','donations.donator_id','donations.donator_name'
+            //     ,'donations.amount','donations.date','donations.donation_type',
+            //     'donations.donator_type')
+            //     ->get()->toArray();
+            //dd($donations);	    
 
-         $donations = Donation::query()->get();	    
-        // $donators = Donator::query()->get();
-        return view('admin.donations.donations', compact('donations'));
-    }
+            $donations = Donation::query()->get();	    
+            // $donators = Donator::query()->get();
+            return view('admin.donations.donations', compact('donations'));
+        }
     }
     public function add_edit_donations(Request $request, $id = null)
      {
@@ -96,11 +150,11 @@ class DonationController extends Controller
     public function searchNumber(Request $request)
     {
         if ($request->ajax()) {
-            $getCatagories = Donator::where('phone', 'LIKE', $request->search . '%')
+            $donatorDetail = Donator::where('phone', 'LIKE', $request->search . '%')
                 ->get();
             return response()->json([
                 'success' => true, 
-                'data' => $getCatagories
+                'data' => $donatorDetail
             ]);
         }
     }

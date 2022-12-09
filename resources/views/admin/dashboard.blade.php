@@ -1,3 +1,4 @@
+<? use App\Models\Project; ?>
 @extends('admin.layout.layout')
 
 @section('content')
@@ -28,69 +29,84 @@
     </div>
     </div>
     <div class="row">
-    <div class="col-md-6 grid-margin stretch-card">
-        <div class="card tale-bg">
-        <div class="card-people mt-auto">
-            <img src="{{ url('admin/images/dashboard/people.svg')}}" alt="people">
-            <div class="weather-info">
-            <div class="d-flex">
-                <div>
-                <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card tale-bg">
+            <div class="card-people mt-auto">
+                <img src="{{ url('admin/images/dashboard/people.svg')}}" alt="people">
+                <div class="weather-info">
+                <div class="d-flex">
+                    <div>
+                    <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+                    </div>
+                    <div class="ml-2">
+                    <h4 class="location font-weight-normal">Bangalore</h4>
+                    <h6 class="font-weight-normal">India</h6>
+                    </div>
                 </div>
-                <div class="ml-2">
-                <h4 class="location font-weight-normal">Bangalore</h4>
-                <h6 class="font-weight-normal">India</h6>
                 </div>
             </div>
             </div>
-        </div>
-        </div>
-    </div> 
-    <div class="col-md-6 grid-margin transparent">
-        <div class="row">
-        <div class="col-md-6 mb-4 stretch-card transparent">
-            <div class="card card-tale">
-            <div class="card-body">
-                <h3>Donators</h3><hr>
-                <p class="fs-30 mb-2">{{$donators->count()}}</p>
-                
-                <p>{{$m_donators}} monthly | {{$y_donators}} yearly </p>
+        </div> 
+        <div class="col-md-6 grid-margin transparent">
+            <div class="row">
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                    <div class="card card-tale">
+                    <div class="card-body">
+                        <h3>Donators</h3><hr>
+                        <p class="fs-30 mb-2">{{$donators->count()}}</p>
+                        
+                        <p>{{$m_donators}} monthly | {{$y_donators}} yearly </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                    <div class="card card-dark-blue">
+                    <div class="card-body">
+                        <h3 class="fs-40">Collections</h3><hr>
+                        <p class="fs-30 mb-2">61344</p>
+                        <p>22.00% (30 days)</p>
+                    </div>
+                    </div>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                    <div class="card card-light-blue">
+                    <div class="card-body">
+                        <h3>Expenses</h3><hr>
+                        <p class="fs-30 mb-2">{{$expenses->sum('amount')}} TK</p>
+                        <!-- <p>2.00% (30 days)</p> -->
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-6 stretch-card transparent">
+                    <div class="card card-light-danger">
+                    <div class="card-body">
+                        <h3>Donations</h3><hr>
+                        <p class="fs-30 mb-2">{{$donations->sum('amount')}} TK</p>
+                        <p></p>
+                    </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6 mb-4 stretch-card transparent">
-            <div class="card card-dark-blue">
-            <div class="card-body">
-                <h3 class="fs-40">Collections</h3><hr>
-                <p class="fs-30 mb-2">61344</p>
-                <p>22.00% (30 days)</p>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="row">
-        <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-            <div class="card card-light-blue">
-            <div class="card-body">
-                <h3>Expenses</h3><hr>
-                <p class="fs-30 mb-2">{{$expenses->sum('amount')}} TK</p>
-                <!-- <p>2.00% (30 days)</p> -->
-            </div>
-            </div>
-        </div>
-        <div class="col-md-6 stretch-card transparent">
-            <div class="card card-light-danger">
-            <div class="card-body">
-                <h3>Donations</h3><hr>
-                <p class="fs-30 mb-2">{{$donations->sum('amount')}} TK</p>
-                <p></p>
-            </div>
-            </div>
-        </div>
         </div>
     </div>
+    <div class="row ">
+        <div class="col-12 p-4" >
+            <h2><b>Funds</b></h2><hr>
+        </div>
+        @foreach($projects as $project)
+            <div class="col-3 mb-4 stretch-card transparent">
+                <div class="card card-tale">
+                    <div class="card-body">
+                        <h3>{{$project['name']}}</h3><hr>
+                        <p class="fs-30 mb-2">{{Project::find($project['id'])->donation()->get()->sum('amount'); }} TK</p>                    
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
-    <div class="row">
+    <!-- <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
         <div class="card-body">
@@ -130,7 +146,7 @@
             <!-- <canvas id="sales-chart"></canvas> -->
         </div>
         </div>
-    </div>
+    <!-- </div>
     </div>
     <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
@@ -645,7 +661,7 @@
             </div>
         </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <!-- content-wrapper ends -->
 

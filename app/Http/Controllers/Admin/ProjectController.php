@@ -10,6 +10,8 @@ class ProjectController extends Controller
 {
     public function projects(){
         $projects=Project::query()->get();
+        //$amounts = Project::find()->donation()->get()->toArray();
+        //dd($amounts);
         // $irregular_donators =$irregular_donators->where('type','irregular_donator')->get()->toArray();
         return view('admin.front_page_customization.project.projects',compact('projects'));
     }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Admin\DonationController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         //donationsfilter-by-month
         Route::get('donations/donations','DonationController@donations');
+        Route::get('donations/general-donations',[DonationController::class, 'generalDonation']);
         Route::match(['get','post'],'donations/add-edit-donations','DonationController@add_edit_donations');
         
         Route::post('donations/append-donation', [DonationController::class, 'searchNumber'])
@@ -86,6 +88,9 @@ Route::get('about', [HomeController::class, 'about']);
 Route::get('projects', [HomeController::class, 'projects']);
 Route::get('gallery', [HomeController::class, 'gallery']);
 Route::get('contact', [HomeController::class, 'contact']);
+Route::match(['get','post'],'donor-life-time-member',[HomeController::class,'DonorAndLifeTimeMemberAdd']);
+Route::get('form-pdf-download',[PDFController::class, 'generatePDF']);
+
 Route::post('donate', [HomeController::class, 'donate']);
 
 //Route::match(['get','post'],'user/login',[UserController::class,'Login']);

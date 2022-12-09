@@ -1,3 +1,5 @@
+<? use App\Models\Project; ?>
+
 @extends('admin.layout.layout')
 
 @section('content')
@@ -66,7 +68,7 @@
                                 <img style="height: 80px; width: 100px;text-align: center" src="{{ asset('storage/admin/front/images/projects/'.$project['image'])}}">
                             </td>
                             <td style="padding:10px;text-align: center">
-                                {{ $project['amount']}}
+                                {{Project::find($project['id'])->donation()->get()->sum('amount'); }}
                             </td>
                             <td style="padding:10px;">
                                 @if( $project['status']==1)

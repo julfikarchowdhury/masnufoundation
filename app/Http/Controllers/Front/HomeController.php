@@ -23,6 +23,11 @@ class HomeController extends Controller
 
         return view('front.about',compact('sliders'));
     }
+    public function DonorAndLifeTimeMemberAdd(){
+        return view('front.donor-life-time-member');
+    }
+    
+    
     public function projects(){
         $projects=Project::query()->get();
         
@@ -51,8 +56,7 @@ class HomeController extends Controller
         $donations->donation_type = $data['donation_type'];
         $donations->donator_id = $data['donator_id'];
         $donations->donator_name = $data['donator_name'];
-        $donations->donator_type = 'Irregular Donator';
-        //dd( $donations );
+        $donations->donator_type = '0';
         $donations->save();
         $message = "donation successfull";
         return redirect('/')->with('success_message', $message);;
