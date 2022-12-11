@@ -41,10 +41,10 @@ class HomeController extends Controller
         return view('front.gallery',compact('sliders'));
     }
     public function contact(){
-        $sliders=Slider::query()->get();
+        //$sliders=Slider::query()->get();
         
 
-        return view('front.contact',compact('sliders'));
+        return view('front.contact');
     }
     public function donate(Request $request){
         $donations = new Donation;

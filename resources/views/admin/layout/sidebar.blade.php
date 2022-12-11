@@ -1,3 +1,4 @@
+<? use App\Models\Donator; ?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
@@ -72,9 +73,14 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/admin/members/new_members"  >
+            <a class="nav-link" href="/admin/new_donators"  >
             <i class="mdi mdi-account-multiple menu-icon" style='font-size:20px'></i>
-                <span class="menu-title">New Members</span>
+                <span class="menu-title">New Donators<span class="border border-danger" 
+                    style="margin:20px;border-radius:50%; padding-right: 3px;background: red;
+                        color: #ffffff;text-align: center;">
+                        {{Donator::where('status',"0")->count()}}
+                    </span>
+                </span>
             </a>
         </li>
         

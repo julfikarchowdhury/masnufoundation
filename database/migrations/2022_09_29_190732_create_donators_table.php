@@ -16,13 +16,22 @@ return new class extends Migration
         Schema::create('donators', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('address');
-            $table->string('type');
+            $table->string('profession');
+            $table->string('father_name');
+            $table->string('mother_name');
+            $table->string('age');
+            $table->text('permanent_address');
+            $table->text('present_address');
+            $table->string('nationality');
+            $table->string('relegion');
+            $table->bigInteger('NID');
+            $table->bigInteger('birth_id');
             $table->string('phone');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('image');
             $table->tinyInteger('status');
+            $table->string('type');
             $table->timestamps();
         });
     }

@@ -50,10 +50,13 @@
             <input type="text" name="relegion" class="form-control" id="relegion" placeholder="Enter relegion" required>
         </div>
         <div class="col-6">
-            <label for="nationalId" class="form-label">National Id Number</label>
-            <input type="text" name="nationalId" class="form-control" id="nationalId" placeholder="Enter national id" required>
+            <label for="nationalId" class="form-label">National Id Number(if available)</label>
+            <input type="text" name="nationalId" class="form-control" id="nationalId" placeholder="Enter national id (if available)" required>
         </div>
-        <div class="col-6"></div>
+        <div class="col-6">
+        <label for="birthId" class="form-label">National Id Number</label>
+            <input type="text" name="birthId" class="form-control" id="birthId" placeholder="Enter birth id" required>
+        </div>
         <div class="col-4">
             <label for="image" class="form-label">Image</label>
             <input type="file" name="image" class="form-control" id="image" required>

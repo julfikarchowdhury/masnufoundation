@@ -64,7 +64,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get','post'],'expenses/add-expenses','ExpensesController@add_expenses');
 
         //members
-        Route::get('members/new_members','AdminController@new_members');
+        Route::get('new_donators','DonatorController@new_donator');
 
         //received ammounts
         Route::get('received_ammounts/received_ammounts','AdminController@received_ammounts');

@@ -25,6 +25,11 @@ class DonatorController extends Controller
         
         return view('admin.donators.all_donator',compact('all_donators'));
     }
+    public function new_donator(){
+        $new_donators=Donator::where('status',"0")->get();
+        
+        return view('admin.donators.new_donator',compact('new_donators'));
+    }
     public function add_donators(Request $request){
             
         // $request->validate([

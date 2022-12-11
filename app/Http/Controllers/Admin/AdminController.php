@@ -22,7 +22,7 @@ class AdminController extends Controller
         $expenses = Expense::query()->get();
         $donations = Donation::query()->get();
         $projects = Project::get();
-
+       
         return view('admin.dashboard',compact('donators','y_donators','m_donators','irr_donators',
         'expenses','donations','projects'));
     }
