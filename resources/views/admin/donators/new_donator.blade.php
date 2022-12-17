@@ -32,9 +32,7 @@
                         <th >
                             Image
                         </th>
-                        <th >
-                            Status
-                        </th>
+                        
                         <th >
                             Actions
                         </th>
@@ -44,14 +42,15 @@
                     @if (count($new_donators) === 0)
                         <tr>
                             <td colspan="8" style="text-align: center; color:red;"><strong>SORRY!! </strong>
-                                No donators are available.</b>
+                                No Applicantion is available.</b>
                             </td>
                         </tr>
                     @else
-                      @foreach($new_donators as $new_donator)
+                    
+                      @foreach($new_donators as $key => $new_donator)
                         <tr style="text-align: center;">
                             <td style="padding:10px;">
-                                {{ $new_donator['id']}}
+                                {{ $key+1}}
                             </td>
                             <td style="padding:10px;">
                                 {{ $new_donator['name']}}
@@ -70,15 +69,15 @@
                                 src="{{ asset('storage/admin/images/donators/'.$new_donator['image'])}}">
                             </td>
                             <td style="padding:10px;">
-                                <button class="btn btn-success"<a href="{{ url('admin/donator-approval/'.$new_donator['id']) }}">Approve</a></button>
-                            </td>
-                            <td>
-                                <a href="{{ url('admin/donators/'.$new_donator['id']) }}" title="Show Details">
+                                <a class="btn btn-primary" href="{{ url('admin/donators/'.$new_donator['id']) }}" 
+                                title="Show Details">
+                                    View Details
+                                </a>
+                            
+                                <!-- <a href="{{ url('admin/donators/'.$new_donator['id']) }}" title="Show Details">
                                     <i style="font-size:25px;padding-right:5px;" class="fa fa-info-circle" aria-hidden="true"></i>
                                 </a>
-                                <a href="{{ url('admin/donators/delete-donator/'.$new_donator['id']) }}" title="Delete">
-                                    <i style="font-size:25px;"  class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
+                                 -->
                             </td>
                         </tr>
                       @endforeach

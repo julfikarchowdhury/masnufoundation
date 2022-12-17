@@ -28,9 +28,13 @@ $(document).ready(function () {
 	//filter by month in donation blade
 	$(".x").on("click", function (){
 		var month = $(this).val();
-		//alert(month)
+		//to get the last part of url
+	var pathname = window.location.pathname,
+	parts = pathname.split("/"),
+	last_part = parts[parts.length-1];
+	// alert(last_part)
 		$.ajax({
-			url: 'filter-by-month',
+			url: 'filter-by-month/'+last_part,
 			type: "post",
 			data:{'month':month},
 			success:function (response){
@@ -38,6 +42,7 @@ $(document).ready(function () {
 				}
 				
 			});
+		$("#filterByMonth").html($(this).html()).css('font-weight','bold');
 	});
 	
 	
@@ -93,6 +98,7 @@ $(document).ready(function () {
 		}
 	});
 	//filter by month on donation blade page
+	
 	
 });
 // content +='<tr>';

@@ -41,24 +41,34 @@ class DonatorController extends Controller
 
         // ]);
         if($request->isMethod('post')){
-            $message = "added successfully";
+            $message = "Form Submitted successfully";
             $donator = new Donator;
             $data = $request->all();
 
             $donator->name = $data['name'];
-            $donator->address = $data['address'];
+            $donator->father_name = $data['fatherName'];
+            $donator->mother_name = $data['motherName'];
+            $donator->age = $data['age'];
+            $donator->profession = $data['profession'];
+            $donator->nationality = $data['nationality'];
+            $donator->relegion = $data['relegion'];
+            $donator->NID = $data['nationalId'];
+            $donator->birth_id = $data['birthId'];
+            $donator->permanent_address = $data['permanentAddress'];
+            $donator->present_address = $data['presentAddress'];
             $donator->email = $data['email'];
             $donator->password = Hash::make($data['password']);
-            $donator->type = $data['type'];
+            $donator->type = "1";//1 indicate yearly donator
             $donator->phone = $data['phone'];
             if ($request->hasFile('image')){
                 $image = $request->image;
                 $name = $image->getClientOriginalName();
                 $image->storeAs('public/admin/images/donators',$name);
                 // $banner = new BannerImage;
+                //dd($name);
                 $donator->image = $name;
             }
-            $donator->status = $data['status'];
+            $donator->status = "0";
             $donator->save();
 
             return redirect()->back()->with('success_message',$message);
@@ -74,5 +84,14 @@ class DonatorController extends Controller
         $message = "Donator has been deleted successfully!";
         return redirect()->back()->with('success_message',$message);
 
+    }
+    public function approveDonator($id){
+        $donator = Donator::find($id);
+        
+        $message = "Donator Approved";
+        $donator->status = "1";
+        $donator->save();
+
+        return redirect()->back()->with('success_message',$message);
     }
 }

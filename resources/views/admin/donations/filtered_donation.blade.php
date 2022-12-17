@@ -1,11 +1,13 @@
+<? use App\Models\Donation; ?>
+
 @if (count($donations) === 0)
                         <tr>
                             <td colspan="8" style="text-align: center; color:red;"><strong>SORRY!! </strong>No donations are available.</b></td></tr>
                     @else
-                      @foreach($donations as $donation)
+                      @foreach($donations as $key => $donation)
                         <tr>
                             <td style="padding:15px 10px;text-align:center;">
-                                {{ $donation['id']}}
+                                {{$key+1}}
                             </td>
                             <td style="padding:15px 10px;text-align:center;">
                                 {{ $donation['amount']}}
@@ -32,17 +34,8 @@
                                 {{date('d-m-Y', strtotime($donation['date']))}}
                             </td>
                             <td style="padding:15px 10px;text-align:center;">
-                                @if( $donation['donation_type'] == "1")
-                                    Jakat
-                                @elseif($donation['donation_type'] == "2")
-                                    Lillah Boarding
-                                @elseif($donation['donation_type'] == "3")
-                                    General
-                                @elseif($donation['donation_type'] == "4")
-                                    Orpan
-                                @elseif($donation['donation_type'] == "5")
-                                    Sadaqah Jariyah
-                                @endif 
+                            {{Donation::find($donation['donation_type'])->project()->get()->value('name'); }}
+                                
                             </td>
                             <td>
                                 <a href="{{ url('admin/donations/'.$donation['id']) }}">

@@ -75,11 +75,13 @@
         <li class="nav-item">
             <a class="nav-link" href="/admin/new_donators"  >
             <i class="mdi mdi-account-multiple menu-icon" style='font-size:20px'></i>
-                <span class="menu-title">New Donators<span class="border border-danger" 
-                    style="margin:20px;border-radius:50%; padding-right: 3px;background: red;
+                <span class="menu-title">New Donators
+                     @if ((Donator::where('status',"0")->count())!="0")   
+                     <span class="border border-danger"style="margin:20px;border-radius:50%; padding-right: 3px;background: red;
                         color: #ffffff;text-align: center;">
                         {{Donator::where('status',"0")->count()}}
-                    </span>
+                     </span>
+                    @endif
                 </span>
             </a>
         </li>

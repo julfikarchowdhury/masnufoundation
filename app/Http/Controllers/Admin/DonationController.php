@@ -12,40 +12,31 @@ class DonationController extends Controller
 {   
     public function generalDonation(Request $request){
         if ($request->ajax()) {
-        
-            $donations = Donation::whereMonth('date', ($request->month))
-                ->get();
-            $donators = Donator::query()->get();
+        //dd("hgh");
+            //$donations = Donation::where('donation_type',3)->whereMonth('date', ($request->month))
+                //->get();
+            $donators = Donator::query()->where('type',2)->get();
             $content='';
                 $content ='<div>';
-                    foreach ($donations as $donation) {
+                    foreach ($donators as $key => $donator) {
                         
                         $content .= '<tr>
-                                        <td style="padding:15px 10px;text-align:center;">' 
-                                        .$donation->id.
+                                        <td style="padding:15px 10px;text-align:center;">'
+                                        .($key+1).
                                         '</td>
-                                        <td style="padding:15px 10px;text-align:center;">' 
-                                        .$donation->amount.
+                                        <td style="padding:15px 10px;text-align:center;">'
+                                            .$donator->name.                                      
                                         '</td>
-                                        <td style="padding:15px 10px;text-align:center;">' 
-                                        .$donation->donator_name.
-                                        '</td>
-                                        
-                                        <td style="padding:15px 10px;text-align:center;">' 
-                                        .$donation->donator_type.
-                                        '</td>
-                                        <td style="padding:15px 10px;text-align:center;">' 
-                                        .date('d-m-Y', strtotime($donation->date)).
-                                        '</td>
-                                        <td style="padding:15px 10px;text-align:center;">' 
-                                        .$donation->donation_type.
-                                        '</td>
-                                        <td>
-                                        <a href="'.$donation->id.'">
-                                            <i style="font-size:35px;text-align: center"  class="mdi mdi-eye" 
-                                            title="show detals"></i>
-                                        </a> 
+                                        <td style="padding:15px 10px;text-align:center;">'
+                                            .$donator->phone.
+                                        '</td>';
+                                        if (count(Donation::where('donator_type',($donator['id']))->whereMonth('date',($request->month))->get()) === 0)
+                                        $content .= '<td style="padding:15px 10px;text-align: center; color:red;"><strong>Not Paid</strong>
+                                        </td>';
+                                        else
+                                        $content .= '<td style="padding:15px 10px;text-align: center; color:green;"><strong>Paid</strong>
                                         </td>
+                                        
                                     </tr>';
                     }
                     $content .= '</div>';
@@ -59,9 +50,12 @@ class DonationController extends Controller
             //     ->get()->toArray();
             //dd($donations);	    
 
-            $donations = Donation::query()->where('donation_type',3)->whereMonth('date',(now()->month))->get();	    
-            // $donators = Donator::query()->get();
-            return view('admin.donations.general_donations', compact('donations'));
+            $donationDetails = Donator::query()->where('type',2)->get();	    
+            //$donations = Donation::query()->get();	 ->whereMonth('date',(now()->month))  
+            ///$month = (now()->month)->format('F'); 
+            
+            $currentMonth = now()->format('F');
+            return view('admin.donations.general_donations', compact('donationDetails','currentMonth'));
         }
     }
     public function donations(Request $request){
@@ -85,14 +79,19 @@ class DonationController extends Controller
                                     .$donation->donator_name.
                                     '</td>
                                     
-                                    <td style="padding:15px 10px;text-align:center;">' 
-                                    .$donation->donator_type.
-                                    '</td>
+                                    <td style="padding:15px 10px;text-align:center;">';
+                                    if($donation['donator_type']== "0")
+                                        $content .= 'Irregular Donator';
+                                    elseif($donation['donator_type']== "1")
+                                        $content .= 'Yearly Donator';
+                                    else
+                                        $content .= 'Monthly Donator';
+                        $content .= '</td>
                                     <td style="padding:15px 10px;text-align:center;">' 
                                     .date('d-m-Y', strtotime($donation->date)).
                                     '</td>
                                     <td style="padding:15px 10px;text-align:center;">' 
-                                    .$donation->donation_type.
+                                    .Donation::find($donation->donation_type)->project()->get()->value('name').
                                     '</td>
                                     <td>
                                     <a href="'.$donation->id.'">

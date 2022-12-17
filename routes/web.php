@@ -45,9 +45,11 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get','post'],'donators/add_donators','DonatorController@add_donators');
         Route::get('donators/{id}','DonatorController@viewDonatorDetails');
         Route::get('donators/delete-donator/{id}','DonatorController@deleteDonator');
+        Route::get('donator-approval/{id}','DonatorController@approveDonator');
+        //Route::get('donator-approval/{id}','UserController@register');
 
-        //donationsfilter-by-month
-        Route::get('donations/donations','DonationController@donations');
+        //donation
+        Route::get('donations/donations',[DonationController::class, 'donations']);
         Route::get('donations/general-donations',[DonationController::class, 'generalDonation']);
         Route::match(['get','post'],'donations/add-edit-donations','DonationController@add_edit_donations');
         
@@ -56,7 +58,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::post('donations/donator-type', [DonationController::class, 'donatorType'])
             ->name('admin.donations.donator.type');
         Route::get('donations/{id}',[DonationController::class, 'ShowDonationDetails']);
-        Route::post('/donations/filter-by-month',[DonationController::class, 'donations']);
+        //donationsfilter-by-month
+        Route::post('/donations/filter-by-month/general-donations',[DonationController::class, 'generalDonation']);
+        Route::post('/donations/filter-by-month/donations',[DonationController::class, 'donations']);
             
         //expenses
         Route::get('expenses/all-expenses','ExpensesController@all_expenses');
@@ -88,7 +92,8 @@ Route::get('about', [HomeController::class, 'about']);
 Route::get('projects', [HomeController::class, 'projects']);
 Route::get('gallery', [HomeController::class, 'gallery']);
 Route::get('contact', [HomeController::class, 'contact']);
-Route::match(['get','post'],'donor-life-time-member',[HomeController::class,'DonorAndLifeTimeMemberAdd']);
+Route::get('donor-life-time-member',[HomeController::class,'DonorAndLifeTimeMemberAdd']);
+Route::post('donor-life-time-member', [App\Http\Controllers\Admin\DonatorController::class, 'add_donators']);
 Route::get('form-pdf-download',[PDFController::class, 'generatePDF']);
 
 Route::post('donate', [HomeController::class, 'donate']);
@@ -99,14 +104,15 @@ Route::match(['get','post'],'user/register',[UserController::class,'Register']);
 
 Route::prefix('/user')->namespace('App\Http\Controllers\Front')->group(function () {
     Route::match(['get','post'],'login',[UserController::class,'Login']);
-    Route::group(['middleware'=>['user']],function(){
+    Route::group(['middleware'=>['donator']],function(){
         //Route::get('dashboard','AdminController@dashboard');
 
 
         Route::get('logout',[UserController::class,'Logout']);
 
-        Route::get('profile', [UserController::class, 'Profile']);
-        Route::get('my-donation', [UserController::class, 'MyDonation']);
+        Route::get('profile/{id}', [UserController::class, 'Profile']);
+        Route::get('my-donation/{id}', [UserController::class, 'MyDonation']);
         Route::get('on-going-donations', [UserController::class, 'OnGoingDonations']);
+        Route::match(['get','post'],'my-donation/donate/{id}',[UserController::class, 'donate']);
     });
 });

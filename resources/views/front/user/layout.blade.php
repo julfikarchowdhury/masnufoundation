@@ -43,10 +43,10 @@
         <!-- nav bar  -->
             <div class="d-flex flex-row" style="background-color: #00802b;width:100%;color:white">
                 <div class="ms-5 p-3 ac">
-                    <a class="nav-link" href="/user/profile">Profile</a>
+                    <a class="nav-link" href="/user/profile/{{Auth::guard('donator')->user()->id}}">Profile</a>
                 </div>           
                 <div class="p-3 ac">
-                    <a class="nav-link" href="/user/my-donation">My Donations</a>
+                    <a class="nav-link" href="/user/my-donation/{{Auth::guard('donator')->user()->id}}">My Donations</a>
                 </div>            
                 <div class="p-3 ac">
                     <a class="nav-link" href="/user/on-going-donations">On Going Donation Projects</a>

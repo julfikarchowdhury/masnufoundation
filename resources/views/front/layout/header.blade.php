@@ -23,7 +23,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="/admin/login">as Admin</a></li>
-                        <li><a class="dropdown-item" href="/user/login">as User</a></li>
+                        <li><a class="dropdown-item" href="/user/login">as Donator</a></li>
                     </ul>
                     
                 </div>

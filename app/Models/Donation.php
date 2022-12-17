@@ -9,6 +9,6 @@ class Donation extends Model
 {
     use HasFactory;
     public function project(){
-        return $this->belongsTo(Projet::class,'project_id');
+        return $this->belongsTo(Project::class,'id');
     }
 }
