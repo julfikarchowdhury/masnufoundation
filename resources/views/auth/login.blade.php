@@ -20,7 +20,7 @@
                                     <select  class="form-control form-control-lg" style="border-radius: 15px;background-color: white;"
                                         id="type" name="type" selected="" placeholder="Username">
                                         <option value="user">User</option>                                    
-                                        <option value="super admin">Super Admin</option>
+                                        <option value="system-admin">Super Admin</option>
                                         <option value="admin 1">Admin 1</option> 
                                         <option value="admin 2">Admin 2</option>
                                         <option value="admin 3">Admin 3</option>                       

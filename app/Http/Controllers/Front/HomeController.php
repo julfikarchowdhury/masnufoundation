@@ -11,11 +11,9 @@ use App\Models\Donation;
 class HomeController extends Controller
 {
     public function dashboard(){
-        $sliders=Slider::query()->get();
-        $projects=Project::where('status',1)->get();
-
-
-        return view('front.dashboard',compact('sliders','projects'));
+        $data['sliders']=Slider::where('status',1)->get();
+        $data['projects']=Project::where('status',1)->get();
+        return view('front.dashboard',$data);
     }
     public function about(){
         $sliders=Slider::query()->get();

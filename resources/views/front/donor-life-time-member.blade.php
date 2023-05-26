@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container-fluid " style=" background-color: #008e48;text-align:center;display:inline-block">
-    <h1 style="color: #ffffff;padding-top: 16px; padding-bottom: 16px;">Donor And Life Time Member</h1>
+<div class="page-header">
+  <h1>Donor And Life Time Member</h1>
 </div>
 <div>
     @if (session('success_message'))
@@ -12,7 +12,7 @@
         </div>
     @endif
 </div>
-<div class="container my-5 " style="background-color:#ebebeb;">
+<section class="container my-5" style="background-color:#ebebeb;">
     <form class="row g-3 p-3" action="donor-life-time-member" method="post"  enctype="multipart/form-data">@csrf
         <h2 style="text-align: center;">Application Form</h2>
         <div class="col-6">
@@ -47,13 +47,13 @@
             <label for="motherName" class="form-label">Mother Name</label>
             <input type="text" name="motherName" class="form-control" id="motherName" placeholder="Enter mother name" required>
         </div>
-        <div class="col-12">
+        <div class="col-6">
             <label for="presentAddress" class="form-label">Present address</label>
-            <input type="text" name="presentAddress" class="form-control" id="presentAddress" placeholder="Enter present address" required>
+            <textarea type="text" name="presentAddress" class="form-control" id="presentAddress" placeholder="Enter present address" row="3" required></textarea>
         </div>
-        <div class="col-12">
+        <div class="col-6">
             <label for="permanentAddress" class="form-label">Permanent Address</label>
-            <input type="text" name="permanentAddress" class="form-control" id="permanentAddress" placeholder="Enter permanent address" required>
+            <textarea type="text" name="permanentAddress" class="form-control" id="permanentAddress" placeholder="Enter permanent address" row="3" required></textarea>
         </div>
         <div class="col-6">
             <label for="nationality" class="form-label">Nationality</label>
@@ -71,7 +71,7 @@
             <label for="birthId" class="form-label">Birth Id Number</label>
             <input type="text" name="birthId" class="form-control" id="birthId" placeholder="Enter birth id" required>
         </div>
-        <div class="col-4">
+        <div class="col-12">
             <label for="image" class="form-label">Image</label>
             <input type="file" name="image" class="form-control" id="image" required>
         </div>
@@ -87,8 +87,7 @@
             <button class="btn btn-primary" type="submit">Submit form</button>
             <a style="float: right;" href="form-pdf-download"<button class="btn btn-primary" type="submit">download form</button></a>
         </div>
-        
     </form>
-</div>
+</section>
 
 @endsection

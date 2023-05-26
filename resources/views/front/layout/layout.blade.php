@@ -23,11 +23,11 @@
     <header>
     @include('front.layout.header')
     </header>
-    <main >
+    <main class="content">
         @yield('content')
 
     </main>
-    <footer>
+    <footer class="footer">
     @include('front.layout.footer')
 
     </footer>

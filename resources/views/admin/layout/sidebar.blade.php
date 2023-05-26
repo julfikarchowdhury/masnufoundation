@@ -1,4 +1,6 @@
-<? use App\Models\Donator; ?>
+<?
+
+use App\Models\Donator; ?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
@@ -21,9 +23,9 @@
                 </ul>
             </div>
         </li> -->
-        
-        
-        
+
+
+
         @if(Auth::guard('admin')->user()->type=="admin 1")
 
         <li class="nav-item">
@@ -34,38 +36,38 @@
             </a>
             <div class="collapse" id="ui-admins">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/admin/admins/admins"> Admins </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/admin/admins/add-edit-admin"> Add Admin </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/admins/admins"> Admins </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/admins/add-edit-admin"> Add Admin </a></li>
                 </ul>
             </div>
         </li>
         @else
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-donators" aria-expanded="false" aria-controls="ui-donators">
-            <i class="fas fa-hand-holding-usd menu-icon" style="font-size:20px"></i>    
+                <i class="fas fa-hand-holding-usd menu-icon" style="font-size:20px"></i>
                 <span class="menu-title">Donator</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-donators">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/admin/donators/monthly_donator">Monthly Donator</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/admin/donators/yearly_donator">Yearly Donator</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/admin/donators/all_donator">All Donators</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/donators/monthly_donator">Monthly Donator</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/donators/yearly_donator">Yearly Donator</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/donators/all_donator">All Donators</a></li>
                 </ul>
             </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-donations" aria-expanded="false" aria-controls="ui-donations">
-            <i class="fas fa-hand-holding-usd menu-icon" style="font-size:20px"></i>    
+                <i class="fas fa-hand-holding-usd menu-icon" style="font-size:20px"></i>
                 <span class="menu-title">Donations</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-donations">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> 
+                    <li class="nav-item">
                         <a class="nav-link" href="/admin/donations/donations">Donations</a>
                     </li>
-                    <li class="nav-item"> 
+                    <li class="nav-item">
                         <a class="nav-link" href="/admin/donations/general-donations">General Donation</a>
                     </li>
                 </ul>
@@ -73,38 +75,38 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/admin/new_donators"  >
-            <i class="mdi mdi-account-multiple menu-icon" style='font-size:20px'></i>
+            <a class="nav-link" href="/admin/new_donators">
+                <i class="mdi mdi-account-multiple menu-icon" style='font-size:20px'></i>
                 <span class="menu-title">New Donators
-                     @if ((Donator::where('status',"0")->count())!="0")   
-                     <span class="border border-danger"style="margin:20px;border-radius:50%; padding-right: 3px;background: red;
+                    @if (isset($donator)&&(Donator::where('status',"0")->count())!="0")
+                    <span class="border border-danger" style="margin:20px;border-radius:50%; padding-right: 3px;background: red;
                         color: #ffffff;text-align: center;">
                         {{Donator::where('status',"0")->count()}}
-                     </span>
+                    </span>
                     @endif
                 </span>
             </a>
         </li>
-        
+
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-expenses" aria-expanded="false" aria-controls="ui-expenses">
-            <i class='fas fa-donate menu-icon' style='font-size:20px'></i>    
+                <i class='fas fa-donate menu-icon' style='font-size:20px'></i>
                 <span class="menu-title">Expenses</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-expenses">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/admin/expenses/my-expenses">My Expenses </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/admin/expenses/all-expenses">All Espenses</a></li>
-                <!-- <li class="nav-item"> <a class="nav-link" href="/admin/expenses/years-expenses">Irregular Donator</a></li> -->
+                    <li class="nav-item"> <a class="nav-link" href="/admin/expenses/my-expenses">My Expenses </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/expenses/all-expenses">All Espenses</a></li>
+                    <!-- <li class="nav-item"> <a class="nav-link" href="/admin/expenses/years-expenses">Irregular Donator</a></li> -->
                 </ul>
             </div>
         </li>
 
         <li class="nav-item">
             <!-- <a class="nav-link" data-toggle="collapse" href="/admin/collections/collections" aria-expanded="false" aria-controls="ui-collection"> -->
-            <a class="nav-link" href="/admin/collections/collections"  >
-            <i class='mdi mdi-cash-usd menu-icon' style='font-size:20px'></i>    
+            <a class="nav-link" href="/admin/collections/collections">
+                <i class='mdi mdi-cash-usd menu-icon' style='font-size:20px'></i>
                 <span class="menu-title">Collection</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -119,8 +121,8 @@
 
         <li class="nav-item">
             <!-- <a class="nav-link" data-toggle="collapse" href="/admin/received_ammounts/received_ammounts" aria-expanded="false" aria-controls="ui-received"> -->
-            <a class="nav-link" href="/admin/received_ammounts/received_ammounts"  >
-            <i class='mdi mdi-cash-usd menu-icon' style='font-size:20px'></i>    
+            <a class="nav-link" href="/admin/received_ammounts/received_ammounts">
+                <i class='mdi mdi-cash-usd menu-icon' style='font-size:20px'></i>
                 <span class="menu-title">Received Amount</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -141,9 +143,9 @@
             </a>
             <div class="collapse" id="ui-fpcustom">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/admin/front-page-customization/slider/slider"> Slider </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/admin/admins/add-edit-admin"> Gallery Section </a></li>
-                <li class="nav-item"> <a class="nav-link" href="/admin/front-page-customization/project/project"> Projects </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/front-page-customization/slider/slider"> Slider </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/admins/add-edit-admin"> Gallery Section </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/front-page-customization/project/project"> Projects </a></li>
                 </ul>
             </div>
         </li>
