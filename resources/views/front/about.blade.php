@@ -5,15 +5,15 @@
 <div class="page-header">
   <h1>About</h1>
 </div>
-<div class="container-fluid" style="background-color:#ebebeb;">
+<div class="page-content">
     <section class="container-fluid p-5">
         <div class="row d-flex">
             <div class="col-3" style="padding:20px 0px;margin-right:80px">
                 <ul style="list-style-type:none;">
-                    <li class="about-div-sizing x about-sidebar-indicator" value="1">Introduction</li>
-                    <li class="about-div-sizing x" value="2">Principles and Norms</li>
-                    <li class="about-div-sizing x" value="3">Goals and Objectives</li>
-                    <li class="about-div-sizing x" value="4">Sources of funds and income</li>
+                    <li class="div-sizing x sidebar-indicator" value="1">Introduction</li>
+                    <li class="div-sizing x" value="2">Principles and Norms</li>
+                    <li class="div-sizing x" value="3">Goals and Objectives</li>
+                    <li class="div-sizing x" value="4">Sources of funds and income</li>
                 </ul>
             </div>
 

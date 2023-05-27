@@ -144,7 +144,7 @@ use App\Models\Donator; ?>
             <div class="collapse" id="ui-fpcustom">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="/admin/front-page-customization/slider/slider"> Slider </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/admins/add-edit-admin"> Gallery Section </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('gallery.index')}}"> Gallery Section </a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/front-page-customization/project/project"> Projects </a></li>
                 </ul>
             </div>

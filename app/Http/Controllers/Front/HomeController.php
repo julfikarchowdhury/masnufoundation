@@ -7,48 +7,76 @@ use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Project;
 use App\Models\Donation;
+use App\Models\Gallery;
 
 class HomeController extends Controller
 {
-    public function dashboard(){
-        $data['sliders']=Slider::where('status',1)->get();
-        $data['projects']=Project::where('status',1)->get();
-        return view('front.dashboard',$data);
+    public function dashboard()
+    {
+        $data['sliders'] = Slider::where('status', 1)->get();
+        $data['projects'] = Project::where('status', 1)->get();
+        return view('front.dashboard', $data);
     }
-    public function about(){
-        $sliders=Slider::query()->get();
-        
+    public function about()
+    {
+        $sliders = Slider::query()->get();
 
-        return view('front.about',compact('sliders'));
+
+        return view('front.about', compact('sliders'));
     }
-    public function DonorAndLifeTimeMemberAdd(){
+    public function DonorAndLifeTimeMemberAdd()
+    {
         return view('front.donor-life-time-member');
     }
-    
-    
-    public function projects(){
-        $projects=Project::query()->get();
-        
 
-        return view('front.project.projects',compact('projects'));
-    }
-    public function gallery(){
-        $sliders=Slider::query()->get();
-        
 
-        return view('front.gallery',compact('sliders'));
+    public function projects()
+    {
+        $projects = Project::query()->get();
+
+
+        return view('front.project.projects', compact('projects'));
     }
-    public function contact(){
+    public function gallery()
+    {
+        $galleryItems = Gallery::all();
+
+
+        return view('front.gallery', compact('galleryItems'));
+    }
+    public function getGalleryImages($id)
+    {
+        $itemId = $id;
+
+        // Retrieve the images for the selected gallery item using the $itemId
+
+        // Assuming you have a GalleryItem model with a "images" relationship
+        $galleryItem = Gallery::findOrFail($itemId);
+        $imageNames = json_decode($galleryItem->images, true); // Decode the JSON string to get an array of image names
+
+        // Generate the image URLs
+        $imageUrls = [];
+        foreach ($imageNames as $imageName) {
+            $imageUrl = asset('front/images/gallery/' . $imageName);
+            $imageUrls[] = $imageUrl;
+        }
+    
+        // Return the images as a JSON response
+        return response()->json(['images' => $imageUrls]);
+    }
+    public function contact()
+    {
         //$sliders=Slider::query()->get();
-        
+
 
         return view('front.contact');
     }
-    public function donate(Request $request){
+    public function donate(Request $request)
+    {
         $donations = new Donation;
 
         $data = $request->all();
-            
+
         $donations->amount = $data['amount'];
         $donations->date = now();
         $donations->donation_type = $data['donation_type'];

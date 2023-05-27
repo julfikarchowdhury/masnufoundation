@@ -41,7 +41,7 @@
                             <div style="padding:0px 0px;text-align: center">
                             @if(!empty($project['image']))
                             <img style="height: 100px; width: 200px;text-align: center;border: 1px solid #000000;" 
-                            src="{{ asset('storage/admin/front/images/projects/'.$project['image'])}}"><br><br>@else  @endif
+                            src="{{ asset('front/images/projects/'.$project['image'])}}"><br><br>@else  @endif
                             </div>
                             <!-- <div class="form-group">
                                 <label for="amount" >Amount</label>

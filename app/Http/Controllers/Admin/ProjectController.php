@@ -32,12 +32,12 @@ class ProjectController extends Controller
             $project->name = $data['name'];
 
             $project->description = $data['description'];
-            $project->amount = $data['amount'];
+            //$project->amount = $data['amount'];
             //$admin->image = $data['image'];
             if ($request->hasFile('image')){
                 $image = $request->image;
                 $name = $image->getClientOriginalName();
-                $image->storeAs('public/admin/front/images/projects',$name);
+                $image->move(public_path('front/images/projects'),$name);
                 // $banner = new BannerImage;
                 $project->image = $name;
             }

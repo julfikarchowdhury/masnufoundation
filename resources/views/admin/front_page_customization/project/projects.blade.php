@@ -1,4 +1,4 @@
-<? use App\Models\Project; ?>
+<?php use App\Models\Project; ?>
 
 @extends('admin.layout.layout')
 
@@ -65,7 +65,7 @@
                                 {{ $project['description']}}</textarea>
                             </td> 
                             <td >
-                                <img style="height: 80px; width: 100px;text-align: center" src="{{ asset('storage/admin/front/images/projects/'.$project['image'])}}">
+                                <img style="height: 80px; width: 100px;text-align: center" src="{{ asset('front/images/projects/'.$project['image'])}}">
                             </td>
                             <td style="padding:10px;text-align: center">
                                 {{Project::find($project['id'])->donation()->get()->sum('amount'); }}
