@@ -109,13 +109,13 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 });
 
 //front side
-Route::get('/', [HomeController::class, 'dashboard']);
-Route::get('about', [HomeController::class, 'about']);
-Route::get('projects', [HomeController::class, 'projects']);
-Route::get('gallery', [HomeController::class, 'gallery']);
-Route::get('contact', [HomeController::class, 'contact']);
-Route::get('donor-life-time-member', [HomeController::class, 'DonorAndLifeTimeMemberAdd']);
-Route::post('donor-life-time-member', [App\Http\Controllers\Admin\DonatorController::class, 'add_donators']);
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('about', [HomeController::class, 'about'])->name('about');
+Route::get('projects', [HomeController::class, 'projects'])->name('projects');
+Route::get('gallery', [HomeController::class, 'gallery'])->name('gallery');
+Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('donor-life-time-member', [HomeController::class, 'DonorAndLifeTimeMemberAdd'])->name('donor-life-time-member');
+Route::post('donor-life-time-member', [App\Http\Controllers\Admin\DonatorController::class, 'add_donators'])->name('donor-life-time-member.post');
 Route::get('form-pdf-download', [PDFController::class, 'generatePDF']);
 
 Route::post('donate', [HomeController::class, 'donate']);
@@ -127,9 +127,9 @@ Route::get('/gallery/images/{itemId}', [HomeController::class, 'getGalleryImages
 
 Route::prefix('/user')->namespace('App\Http\Controllers\Front')->group(function () {
     Route::match(['get', 'post'], 'login', [UserController::class, 'Login']);
-    Route::group(['middleware' => ['donator']], function () {
+    Route::group(['middleware' => ['web']], function () {
         //Route::get('dashboard','AdminController@dashboard');
-        Route::get('logout', [UserController::class, 'Logout']);
+        Route::get('logout', [UserController::class, 'Logout'])->name('user.logout');
 
         Route::get('profile/{id}', [UserController::class, 'Profile']);
         Route::get('my-donation/{id}', [UserController::class, 'MyDonation']);

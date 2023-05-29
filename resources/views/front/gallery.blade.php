@@ -1,4 +1,4 @@
-@extends('front.layout.layout')
+@extends('front.layouts.layout')
 
 @section('content')
 <div class="page-header">

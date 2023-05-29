@@ -47,12 +47,10 @@ body {
     color: white;
     text-decoration: none;
 }
-
 .menu-item:hover {
     color: #42e442;
     border-bottom: 2px solid #42e442;
 }
-
 .menu-item.active {
     color: #42e442;
     border-bottom: 2px solid #42e442;

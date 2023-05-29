@@ -2,25 +2,24 @@
 <html lang="en">
 
 <head>
-@include('front.layout.head')
+@include('front.layouts.head')
     @yield('css')
     @yield('custom-css')
+   
 </head>
 
 <body>
     <header>
-        @include('front.layout.header')
+        @include('front.layouts.header')
     </header>
     <main class="content">
         @yield('content')
-
     </main>
     <footer class="footer">
-        @include('front.layout.footer')
-
+        @include('front.layouts.footer')
     </footer>
     <!-- scripts  -->
-    @include('front.layout.script')
+    @include('front.layouts.script')
     @yield('script')
     @yield('custom-js')
 

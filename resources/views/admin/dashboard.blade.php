@@ -1,7 +1,7 @@
-<?
+<?php
 
 use App\Models\Project; ?>
-@extends('admin.layout.layout')
+@extends('admin.layouts.layout')
 
 @section('content')
 <div class="content-wrapper">

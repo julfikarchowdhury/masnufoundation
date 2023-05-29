@@ -1,4 +1,4 @@
-@extends('front.layout.layout')
+@extends('front.layouts.layout')
 
 @section('content')
 <div class="page-header">
@@ -28,7 +28,7 @@
                             <label for="message" class="form-label">Message</label>
                             <textarea class="form-control" id="message" name="message" rows="10" placeholder="Write Your Message" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary float-end">Submit</button>
+                        <button type="submit" class="btn btn-success float-end">Submit</button>
                     </form>
                 </div>
             </div>

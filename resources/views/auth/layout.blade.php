@@ -6,7 +6,9 @@
    <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>MAsnu Foundation</title>
+  <title>Msnu Foundation</title>
+  <link rel="shortcut icon" href="{{ url('front/images/logo.png')}}" />
+
    <!-- plugins:css  -->
   <link rel="stylesheet" href="{{ url('admin/vendors/feather/feather.css')}}">
   <link rel="stylesheet" href="{{ url('admin/vendors/ti-icons/css/themify-icons.css')}}">

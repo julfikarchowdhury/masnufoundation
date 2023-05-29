@@ -11,11 +11,11 @@ use App\Models\Gallery;
 
 class HomeController extends Controller
 {
-    public function dashboard()
+    public function home()
     {
         $data['sliders'] = Slider::where('status', 1)->get();
         $data['projects'] = Project::where('status', 1)->get();
-        return view('front.dashboard', $data);
+        return view('front.home', $data);
     }
     public function about()
     {
@@ -35,7 +35,7 @@ class HomeController extends Controller
         $projects = Project::query()->get();
 
 
-        return view('front.project.projects', compact('projects'));
+        return view('front.projects', compact('projects'));
     }
     public function gallery()
     {
