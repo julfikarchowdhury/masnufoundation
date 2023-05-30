@@ -95,3 +95,21 @@ body {
     object-fit: cover;
     max-height: 200px; /* Adjust the max height as needed */
 }
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-group label {
+    flex-basis: 30%;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.form-group > div {
+    flex-basis: 65%;
+    margin-bottom: 5px;
+}
+
+

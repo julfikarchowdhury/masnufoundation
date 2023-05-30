@@ -114,8 +114,8 @@ Route::get('about', [HomeController::class, 'about'])->name('about');
 Route::get('projects', [HomeController::class, 'projects'])->name('projects');
 Route::get('gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('donor-life-time-member', [HomeController::class, 'DonorAndLifeTimeMemberAdd'])->name('donor-life-time-member');
-Route::post('donor-life-time-member', [App\Http\Controllers\Admin\DonatorController::class, 'add_donators'])->name('donor-life-time-member.post');
+Route::get('donor-life-time-member', [HomeController::class, 'DonorAndLifeTimeMember'])->name('donor-life-time-member');
+Route::post('donor-life-time-member', [HomeController::class, 'DonorAndLifeTimeMemberAdd'])->name('donor-life-time-member.post');
 Route::get('form-pdf-download', [PDFController::class, 'generatePDF']);
 
 Route::post('donate', [HomeController::class, 'donate']);

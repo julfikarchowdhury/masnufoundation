@@ -7,7 +7,7 @@
         <div class="logo-img col-7">
             <h2 style="padding-top: 75px;padding-left:10px;color:#006600;"><b>মাসনু ফাউন্ডেশন</b></h2>
         </div>
-        @if (Auth::guard('donator')->check())
+        @if (Auth::check())
         <div class="col-4" style="padding-top:75px;">
             <button type="button" class="btn btn-danger ms-3  " style="float:right;">
                 <a href="{{ route('user.logout')}}" style="color:white;text-decoration: none;">Logout</a>
