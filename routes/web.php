@@ -43,9 +43,9 @@ Route::post('/send-email', function (Request $request) {
 })->name('send-email');
 
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function () {
-    Route::match(['get', 'post'], 'login', 'AdminController@login');
+    Route::match(['get', 'post'], 'login', 'AdminController@login')->name('login');
     Route::group(['middleware' => ['admin']], function () {
-        Route::get('dashboard', 'AdminController@dashboard');
+        Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
         Route::get('logout', 'AdminController@logout');
 
         //admins
@@ -127,7 +127,7 @@ Route::get('/gallery/images/{itemId}', [HomeController::class, 'getGalleryImages
 
 Route::prefix('/user')->namespace('App\Http\Controllers\Front')->group(function () {
     Route::match(['get', 'post'], 'login', [UserController::class, 'Login']);
-    Route::group(['middleware' => ['web']], function () {
+    Route::group(['middleware' => ['auth']], function () {
         //Route::get('dashboard','AdminController@dashboard');
         Route::get('logout', [UserController::class, 'Logout'])->name('user.logout');
 

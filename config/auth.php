@@ -43,15 +43,7 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
-        ],
-        'user' => [
-            'driver' => 'session',
-            'provider' => 'user',
-        ],
-        'donator' => [
-            'driver' => 'session',
-            'provider' => 'donator',
-        ],
+        ]
     ],
 
     /*
@@ -79,20 +71,8 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
-        ],
-        'user' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
-        'donator' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Donator::class,
-        ],
+        ]
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

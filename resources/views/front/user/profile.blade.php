@@ -17,7 +17,7 @@
         <div class="col-sm-3 ms-5 p-5">
 
             <div class="card  shadow-lg" style="width: 18rem;border-radius:15px">
-                <img src="{{ asset('storage/admin/images/donators/'.Auth::guard('donator')->user()->image)}}" class="card-img-top mx-auto mt-4 rounded-circle shadow" style="height: 150px;width: 150px;">
+                <img src="{{ asset('storage/admin/images/donators/'.Auth::user()->image)}}" class="card-img-top mx-auto mt-4 rounded-circle shadow" style="height: 150px;width: 150px;">
                 <div class="card-body">
                     <table class="table table-borderless" style="font-size: 15px;">
                         <tr>
@@ -52,19 +52,19 @@
                 <div class="card-body">
                     <div class="row m-2">
                         <div class="mx-2 ">
-                            <p> Name: {{Auth::guard('donator')->user()->name}}
-                                <br><br>Profession: {{Auth::guard('donator')->user()->profession}}
-                                <br><br>Age: {{Auth::guard('donator')->user()->age}}
-                                <br><br>Mobile No: {{Auth::guard('donator')->user()->phone}}
-                                <br><br>Email: {{Auth::guard('donator')->user()->email}}
-                                <br><br>Father Name: {{Auth::guard('donator')->user()->father_name}}
-                                <br><br>Mother Name: {{Auth::guard('donator')->user()->mother_name}}
-                                <br><br>Permanent Address: {{Auth::guard('donator')->user()->permanent_address}}
-                                <br><br>Present Address: {{Auth::guard('donator')->user()->present_address}}
-                                <br><br>Nationality: {{Auth::guard('donator')->user()->nationality}}
-                                <br><br>Relegion: {{Auth::guard('donator')->user()->relegion}}
-                                <br><br>National ID: {{Auth::guard('donator')->user()->NID}}
-                                <br><br>Birth Certificate ID: {{Auth::guard('donator')->user()->birth_id}}
+                            <p> Name: {{Auth::user()->name}}
+                                <br><br>Profession: {{Auth::user()->profession}}
+                                <br><br>Age: {{Auth::user()->age}}
+                                <br><br>Mobile No: {{Auth::user()->phone}}
+                                <br><br>Email: {{Auth::user()->email}}
+                                <br><br>Father Name: {{Auth::user()->father_name}}
+                                <br><br>Mother Name: {{Auth::user()->mother_name}}
+                                <br><br>Permanent Address: {{Auth::user()->permanent_address}}
+                                <br><br>Present Address: {{Auth::user()->present_address}}
+                                <br><br>Nationality: {{Auth::user()->nationality}}
+                                <br><br>Relegion: {{Auth::user()->relegion}}
+                                <br><br>National ID: {{Auth::user()->NID}}
+                                <br><br>Birth Certificate ID: {{Auth::user()->birth_id}}
                             </p>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
         <div class="col-3 ms-5 p-5">
 
             <div class="card " style="width: 18rem;border-radius:15px">
-                <img src="{{ asset('storage/admin/images/donators/'.Auth::guard('donator')->user()->image)}}" class="card-img-top mx-auto mt-4 rounded-circle shadow" style="height: 150px;width: 150px;">
+                <img src="{{ asset('storage/admin/images/donators/'.Auth::user()->image)}}" class="card-img-top mx-auto mt-4 rounded-circle shadow" style="height: 150px;width: 150px;">
                 <div class="card-body">
                     <table class="table table-borderless" style="font-size: 15px;">
                     </table>

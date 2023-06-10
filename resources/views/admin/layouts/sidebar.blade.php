@@ -1,6 +1,6 @@
-<?
+<?php
 
-use App\Models\Donator; ?>
+use App\Models\User; ?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
@@ -78,10 +78,10 @@ use App\Models\Donator; ?>
             <a class="nav-link" href="/admin/new_donators">
                 <i class="mdi mdi-account-multiple menu-icon" style='font-size:20px'></i>
                 <span class="menu-title">New Donators
-                    @if (isset($donator)&&(Donator::where('status',"0")->count())!="0")
+                    @if ((isset($donator)&&(User::where('status',"0")->count())!="0"))
                     <span class="border border-danger" style="margin:20px;border-radius:50%; padding-right: 3px;background: red;
                         color: #ffffff;text-align: center;">
-                        {{Donator::where('status',"0")->count()}}
+                        {{User::where('status',"0")->count()}}
                     </span>
                     @endif
                 </span>

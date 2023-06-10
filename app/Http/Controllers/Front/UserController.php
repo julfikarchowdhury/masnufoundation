@@ -20,28 +20,24 @@ class UserController extends Controller
     use FileUploadTrait;
     public function Login(Request $request)
     {
-
         if ($request->isMethod('post')) {
             $data = $request->all();
-
-            if ((Auth::guard('donator')->attempt([
-                'phone' => $data['email'],
-                'password' => $data['password'], 'status' => 1
-            ])) || (Auth::guard('donator')->attempt([
+        
+            if (Auth::attempt([
                 'email' => $data['email'],
-                'password' => $data['password'], 'status' => 1
-            ]))) {
-                return redirect('user/profile/' . Auth::guard('donator')->user()->id);
+                'password' => $data['password']
+            ])) {
+                return redirect('user/profile/' . Auth::user()->id);
             } else {
-                return redirect()->back()->with('error_massage', "Invalid Email or Password");
+                return redirect()->back()->with('error_message', "Invalid Email or Password");
             }
         }
-        return view('front.auth.login');
+        return view('front.user.login');
     }
 
     public function Logout()
     {
-        Auth::guard('donator')->logout();
+        Auth::logout();
         return redirect('/');
     }
     public function Profile($id)

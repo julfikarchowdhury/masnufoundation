@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Donator;
+use App\Models\User;
 use Session;
 use Auth;
 use Hash;
@@ -26,7 +27,7 @@ class DonatorController extends Controller
         return view('admin.donators.all_donator',compact('all_donators'));
     }
     public function new_donator(){
-        $new_donators=Donator::where('status',"0")->get();
+        $new_donators=User::where('status',"0")->get();
         
         return view('admin.donators.new_donator',compact('new_donators'));
     }
@@ -75,7 +76,7 @@ class DonatorController extends Controller
         }return view('admin.donators.add_donators');
     }
     public function viewDonatorDetails($id){
-        $donator = Donator::find($id);
+        $donator = User::find($id);
         
         return view('admin.donators.view_donator',compact('donator'));
     }
@@ -86,7 +87,7 @@ class DonatorController extends Controller
 
     }
     public function approveDonator($id){
-        $donator = Donator::find($id);
+        $donator = User::find($id);
         
         $message = "Donator Approved";
         $donator->status = "1";
