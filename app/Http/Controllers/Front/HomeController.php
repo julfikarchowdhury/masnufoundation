@@ -68,7 +68,9 @@ class HomeController extends Controller
     }
     public function gallery()
     {
-        return view('front.gallery');
+        $data['galleryItems'] = Gallery::all();
+
+        return view('front.gallery',$data);
     }
     public function getGalleryImages($id)
     {
